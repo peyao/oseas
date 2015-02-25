@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 */
 
-app.use(express.static('www'));
+app.use(express.static('app'));
 
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {

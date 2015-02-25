@@ -1,7 +1,8 @@
-angular.module('oseas', ['oseas.controllers', 'oseas.services'])
+angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router'])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
 
+  /*
   $httpProvider.defaults.transformRequest = function (data) {
     if ( data === undefined ) {
       return data;
@@ -9,38 +10,28 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services'])
     return $.param(data);
   };
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+  */
 
   $stateProvider
 
-    // setup an abstract state for the tabs directive
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "templates/tabs.html"
+    // Each tab has its own nav history stack:
+    .state('nav', {
+      templateUrl: 'views/nav.html'
     })
 
-    // Each tab has its own nav history stack:
-    .state('tab.home', {
+    .state('home', {
+      parent: 'nav',
       url: '/home',
-      views: {
-        'tab-home': {
-          templateUrl: 'views/home.html',
-          controller: 'HomeCtrl'
-        }
-      }
+      templateUrl: 'views/home.html'
     })
     
-    .state('tab.catalogue', {
+    .state('catalogue', {
+      parent: 'nav',
       url: '/catalogue',
-      views: {
-        'tab-catalogue': { // View is tab-dash because it transitions from dashboard
-          templateUrl: 'views/catalogue.html',
-          controller: 'CatalogueCtrl'
-        }
-      }
+      templateUrl: 'views/catalogue.html'
     });
-  
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/home');
 
 });
