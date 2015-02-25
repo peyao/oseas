@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="oseas"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,15 +19,11 @@
   <script src="logic/controllers.js"></script>
   <script src="logic/services.js"></script>
 
-  <!-- lumX -->
-  <link rel="stylesheet" href="lib/lumx/dist/lumx.css">
-  <link rel="stylesheet" href="lib/mdi/materialdesignicons.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-
   <!-- Our stylesheet -->
+  <link type="text/css" rel="stylesheet" href="lib/materialize/materialize.min.css"  media="screen,projection"/>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body ng-app="oseas">
+<body>
   <!--[if lt IE 7]>
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -35,23 +31,13 @@
   <p>This text is coming from index.html. <br> This is proof that this is a Single Page Application (SPA). Basically, index.html just uses AngularJS to call other views. We never navigate off index.html.</p>
   <hr>
 
-  <!-- Navbar goes here -->
-
   <!-- This is where the states/views will show up -->
   <div ui-view></div>
 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="lib/materialize/materialize.min.js"></script>
 
 
-
-
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/velocity/velocity.js"></script>
-  <script src="lib/moment/min/moment-with-locales.js"></script>
-  <script src="lib/lumx/dist/lumx.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
   <script>
