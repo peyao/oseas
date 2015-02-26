@@ -1,4 +1,4 @@
-angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router'])
+angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'ngMaterial'])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
 
@@ -28,7 +28,8 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router'])
     .state('catalogue', {
       parent: 'nav',
       url: '/catalogue',
-      templateUrl: 'views/catalogue.html'
+      templateUrl: 'views/catalogue.html',
+      controller: 'CatalogueCtrl'
     });
 
   // if none of the above states are matched, use this as the fallback
