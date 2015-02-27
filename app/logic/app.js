@@ -1,6 +1,6 @@
-angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'ngMaterial'])
+angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router'])
 
-.config(function($httpProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
+.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
 
   /*
   $httpProvider.defaults.transformRequest = function (data) {
@@ -11,13 +11,6 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'ng
   };
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   */
-
-  
-  
-  $mdThemingProvider.theme('default')
-    .primaryPalette('grey')
-    .accentPalette('orange');
-  //$mdThemingProvider.setDefaultTheme('darkTheme');
   
 
   $stateProvider
