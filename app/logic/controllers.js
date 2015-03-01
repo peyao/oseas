@@ -7,22 +7,18 @@ angular.module('oseas.controllers', [])
 
 .controller('HomeCtrl', function($scope, $rootScope) {
 
-  restoreBackground($rootScope);
 })
 
 .controller('CatalogueCtrl', function($scope, $rootScope) {
 
-  removeBackground($rootScope);
 })
 
 .controller('AboutCtrl', function($scope, $rootScope) {
 
-  removeBackground($rootScope);
 })
 
 .controller('ContactCtrl', function($scope, $rootScope) {
 
-  removeBackground($rootScope);
 })
 
 .directive('fade', function() {
@@ -50,6 +46,7 @@ angular.module('oseas.controllers', [])
 });
 
 // Helper functions
+/*
 var removeBackground = function($rootScope) {
   $rootScope.body.removeClass('background-image');
   $rootScope.body.addClass('background-black');
@@ -59,3 +56,5 @@ var restoreBackground = function($rootScope) {
   $rootScope.body.addClass('background-image');
 }
 
+
+*/

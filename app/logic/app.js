@@ -1,4 +1,4 @@
-angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router'])
+angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'ngAnimate'])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
 
