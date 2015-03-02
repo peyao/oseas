@@ -1,20 +1,33 @@
 <div class="about below-navbar noflicker noselect no-i-bar">
-  <div class="ui two column padded grid" align="center">
+  <div class="ui two column padded page grid" align="center">
     <!--Product Picture-->
-    <div class="column" align="right">
+    <div class="column" align="left">
       <div class="ui breadcrumb">
         <i class="left chevron icon divider"></i>
         <a class="section" ui-sref="catalogue"> Back to Catalogue</a>
       </div>
       <br><br>
-      <img src="assets/img/xman.jpg" alt="about" class="ui medium image">
-      <br>
-      <img class="ui top aligned tiny image" src="assets/img/front.jpg">
-      <img class="ui middle aligned tiny image" src="assets/img/back.jpg">
-      <img class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
-    </div> 
 
-     
+      <img src="assets/img/xman.jpg" alt="about" class="ui large image">
+      <br>
+      <img class="ui top aligned small image" src="assets/img/front.jpg">
+      <img class="ui middle aligned small image" src="assets/img/back.jpg">
+      <img class="ui bottom aligned small image" src="assets/img/oseas_profile.jpg">
+    </div> 
+<!--switching picture
+<script>
+$(document).ready(function(){
+  $("#img1").click(function(){
+    var img1=$('img#1').attr("src");
+    var img2=$('#img2').attr("src");
+    var img3=$('#img3').attr("src");
+
+    $("#img2").attr("src",img1);
+    $("img1").attr("src",img2)
+  })
+})
+</script>
+     -->
 
 
 
@@ -92,7 +105,7 @@
           <p color="white">Info</p>
         </div>
 
-          <p align="center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+          <p align="center"> To order, it will just be a contact form that will be read by Oseas the designer himself.All correspondances will be taken care of in this fashion.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
 
           <div class="ui divider"></div>
       
