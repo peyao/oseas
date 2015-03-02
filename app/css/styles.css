@@ -68,14 +68,14 @@ p {
   -o-background-size: cover;
   background-size: cover; }
 
-.home .events {
+.home .home-events {
   position: fixed;
   margin-top: 10em;
   margin-left: 5em;
   color: #fff; }
-  .home .events h1 {
+  .home .home-events h1 {
     font-family: 'Poiret One', cursive; }
-  .home .events .ui.list > .item {
+  .home .home-events .ui.list > .item {
     cursor: pointer; }
 
 .catalogue {
@@ -99,6 +99,24 @@ p {
   padding-top: 0%; }
   .about .description {
     color: #fff; }
+
+.events {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 5em 5em;
+  padding-top: 0%;
+  color: #fff; }
+
+.event {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 5em 5em;
+  padding-top: 0%;
+  color: #fff; }
+
+.product {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 5em 5em;
+  padding-top: 0%;
+  color: #fff; }
 
 .fill-rest-of-page {
   position: absolute;
