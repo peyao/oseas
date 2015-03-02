@@ -7,14 +7,22 @@ angular.module('oseas.controllers', [])
   $rootScope.elContact = angular.element( document.querySelector('#nav-contact'));
 })
 
-.controller('HomeCtrl', function($scope, $rootScope, $location) {
+.controller('HomeCtrl', function($scope, $rootScope, $state, $location) {
 
   setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
+
+  $scope.eventRedirect = function() {
+    console.log('Going to event');
+    $state.go('event');
+  };
 })
 
 .controller('CatalogueCtrl', function($scope, $rootScope, $location) {
 
   setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
+})
+
+.controller('ProductCtrl', function($scope, $rootScope, $location) {
 })
 
 .controller('AboutCtrl', function($scope, $rootScope, $location) {
@@ -26,6 +34,12 @@ angular.module('oseas.controllers', [])
 
   setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 
+})
+
+.controller('EventsCtrl', function($scope, $rootScope, $location) {
+})
+
+.controller('EventCtrl', function($scope, $rootScope, $location) {
 })
 
 .directive('fade', function() {

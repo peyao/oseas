@@ -113,7 +113,7 @@ p {
 // home.html
 .home {
 
-  .events {
+  .home-events {
     position: fixed;
     margin-top: 10em;
     margin-left: 5em;
@@ -168,6 +168,35 @@ p {
     color: #fff;
   }
 }
+
+// events.html
+.events {
+  background: rgba(0, 0, 0, .6);
+  margin: 0 5em 5em;
+  padding-top: 0%;
+
+  color: #fff;
+}
+
+// event.html
+.event {
+  background: rgba(0, 0, 0, .6);
+  margin: 0 5em 5em;
+  padding-top: 0%;
+
+  color: #fff;
+}
+
+// product.html
+.product {
+  background: rgba(0, 0, 0, .6);
+  margin: 0 5em 5em;
+  padding-top: 0%;
+
+  color: #fff;
+}
+
+// Utility Classes
 
 .fill-rest-of-page {
   position: absolute;

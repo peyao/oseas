@@ -11,11 +11,10 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
   };
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   */
-  
 
   $stateProvider
 
-    // Each tab has its own nav history stack:
+    // Super Parent
     .state('nav', {
       templateUrl: 'views/nav.html',
       controller: 'NavCtrl'
@@ -27,12 +26,31 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
       templateUrl: 'views/home.html',
       controller: 'HomeCtrl'
     })
+
+    .state('events', {
+      parent: 'nav',
+      url: '/events',
+      templateUrl: 'views/events.html',
+      controller: 'EventsCtrl'
+    })
+    .state('event', {
+      parent: 'nav',
+      url: '/event',
+      templateUrl: 'views/event.html',
+      controller: 'EventCtrl'
+    })
     
     .state('catalogue', {
       parent: 'nav',
       url: '/catalogue',
       templateUrl: 'views/catalogue.html',
       controller: 'CatalogueCtrl'
+    })
+    .state('product', {
+      parent: 'nav',
+      url: '/product',
+      templateUrl: 'views/product.html',
+      controller: 'ProductCtrl'
     })
 
     .state('about', {
