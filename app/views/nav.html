@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar noselect">
   <div class="ui grid">
     <div class="three wide column">
       <a ui-sref="home">
@@ -6,16 +6,15 @@
       </a>
     </div>
     <div class="thirteen wide column right aligned">
-      <a class="hvr-underline-from-center" 
-          ui-sref="catalogue">
+      <div class="hvr-grow nav-link" ui-sref="catalogue" id="nav-cat">
         CATALOGUE
-      </a>&nbsp;&nbsp;
-      <a class="hvr-underline-from-center" ui-sref="about">
+      </div>&nbsp;&nbsp;
+      <div class="hvr-grow nav-link" ui-sref="about" id="nav-about">
         ABOUT
-      </a>&nbsp;&nbsp;
-      <a class="hvr-underline-from-center" ui-sref="contact">
+      </div>&nbsp;&nbsp;
+      <div class="hvr-grow nav-link" ui-sref="contact" id="nav-contact">
         CONTACT
-      </a>
+      </div>
     </div>
   </div>
 </div>

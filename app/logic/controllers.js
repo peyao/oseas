@@ -2,22 +2,29 @@ angular.module('oseas.controllers', [])
 
 .controller('NavCtrl', function($scope, $rootScope, $location){
 
-  $rootScope.body = angular.element( document.querySelector('body'));
+  $rootScope.elCat = angular.element( document.querySelector('#nav-cat'));
+  $rootScope.elAbout = angular.element( document.querySelector('#nav-about'));
+  $rootScope.elContact = angular.element( document.querySelector('#nav-contact'));
 })
 
-.controller('HomeCtrl', function($scope, $rootScope) {
+.controller('HomeCtrl', function($scope, $rootScope, $location) {
 
+  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 })
 
-.controller('CatalogueCtrl', function($scope, $rootScope) {
+.controller('CatalogueCtrl', function($scope, $rootScope, $location) {
 
+  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 })
 
-.controller('AboutCtrl', function($scope, $rootScope) {
+.controller('AboutCtrl', function($scope, $rootScope, $location) {
 
+  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 })
 
-.controller('ContactCtrl', function($scope, $rootScope) {
+.controller('ContactCtrl', function($scope, $rootScope, $location) {
+
+  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 
 })
 
@@ -58,3 +65,29 @@ var restoreBackground = function($rootScope) {
 
 
 */
+
+var setActiveLink = function(currentPage, elCat, elAbout, elContact) {
+  console.log(currentPage);
+  switch(currentPage) {
+    case "/home":
+      $(elCat).removeClass('hvr-underline-from-center:active');
+      $(elAbout).removeClass('hvr-underline-from-center:active');
+      $(elContact).removeClass('hvr-underline-from-center:active');
+      break;
+    case "/catalogue":
+      $(elCat).addClass('red');
+      $(elAbout).removeClass('hvr-underline-from-center:active');
+      $(elContact).removeClass('hvr-underline-from-center:active');
+      break;
+    case "/about":
+      $(elCat).removeClass('hvr-underline-from-center:active');
+      $(elAbout).addClass('hvr-underline-from-center:active');
+      $(elContact).removeClass('hvr-underline-from-center:active');
+      break;
+    case "/catalogue":
+      $(elCat).removeClass('hvr-underline-from-center:active');
+      $(elAbout).removeClass('hvr-underline-from-center:active');
+      $(elContact).addClass('hvr-underline-from-center:active');
+      break;
+  }  
+}

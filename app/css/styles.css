@@ -7,19 +7,51 @@ p {
   top: 0;
   right: 0;
   left: 0;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 7em;
+  margin-right: 5em;
   padding-bottom: 15px;
   padding-top: 15px; }
-  .navbar a {
+  .navbar .nav-link {
     color: #fff;
     font-family: 'Poiret One', cursive;
-    font-size: 200%; }
-  .navbar a:hover {
+    font-size: 200%;
+    cursor: pointer; }
+  .navbar .nav-link:hover {
     color: #fff;
+    font-weight: bold; }
+  .navbar .nav-active {
     font-weight: bold; }
   .navbar img {
     border-radius: 3px; }
+  .navbar .hvr-underline-from-center {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow: hidden; }
+  .navbar .hvr-underline-from-center:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: #fff;
+    height: 4px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out; }
+  .navbar .hvr-underline-from-center:hover:before, .navbar .hvr-underline-from-center:focus:before, .navbar .hvr-underline-from-center:active:before {
+    left: 0;
+    right: 0; }
   .navbar .ui.inverted.basic.button.right.floated {
     margin-top: 0%; }
 
@@ -33,21 +65,50 @@ p {
   -o-background-size: cover;
   background-size: cover; }
 
+.home .events {
+  position: fixed;
+  top: 50%;
+  margin-left: 5em;
+  color: #fff; }
+  .home .events h1 {
+    font-family: 'Poiret One', cursive; }
+  .home .events .ui.list > .item a,
+  .home .events .ui.list > .item .description {
+    color: rgba(255, 255, 255, 0.8) !important; }
+  .home .events .ui.divided.list > .item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
+
 .catalogue {
   background: rgba(0, 0, 0, 0.6);
-  margin: 0% 5% 4% 5%;
-  border-radius: 5px;
-  padding-top: 5%; }
+  margin: 0 5em 5em;
+  padding-top: 0%; }
   .catalogue h1 {
     color: #fff;
     font-family: 'Poiret One', cursive; }
+  .catalogue .product {
+    outline: 1px solid #616161; }
+
+.contact {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 5em 5em;
+  padding-top: 0%; }
+
+.about {
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0 5em 5em;
+  padding-top: 0%; }
+  .about .description {
+    color: #fff; }
 
 .fill-rest-of-page {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 0; }
+
+.below-navbar {
+  position: absolute;
   margin-top: 100px; }
 
 .noselect {
@@ -57,6 +118,9 @@ p {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
+
+.no-i-bar {
+  cursor: default; }
 
 .inline {
   display: inline !important; }
