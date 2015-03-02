@@ -103,7 +103,7 @@ p {
 
 // index.html
 .background-image {
-  background: url('../assets/home/_MG_9227_HOME.jpg') no-repeat center center fixed; 
+  background: url('../assets/home/_MG_9227_HOME.jpg') no-repeat center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -112,7 +112,6 @@ p {
 
 // home.html
 .home {
-
 
   .events {
     position: fixed;
@@ -123,6 +122,10 @@ p {
 
     h1 {
       font-family: 'Poiret One', cursive; 
+    }
+
+    .ui.list > .item {
+      cursor: pointer;
     }
 
     /*

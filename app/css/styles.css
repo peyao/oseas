@@ -62,7 +62,7 @@ p {
   background-color: #000; }
 
 .background-image {
-  background: url("../assets/home/_MG_9227_HOME.jpg") no-repeat center center fixed;
+  background: url("../assets/home/_MG_9227_HOME.jpg") no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -85,6 +85,8 @@ p {
     */ }
   .home .events h1 {
     font-family: 'Poiret One', cursive; }
+  .home .events .ui.list > .item {
+    cursor: pointer; }
 
 .catalogue {
   background: rgba(0, 0, 0, 0.6);
