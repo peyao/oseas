@@ -160,6 +160,10 @@ p {
   background: rgba(0, 0, 0, .6);
   margin: 0 5em 5em;
   padding-top: 0%;
+
+  .ui.inverted.segment {
+    background: rgba(0, 0, 0, .5) !important;
+  }
 }
 
 // about.html
