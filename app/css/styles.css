@@ -72,17 +72,7 @@ p {
   position: fixed;
   margin-top: 10em;
   margin-left: 5em;
-  color: #fff;
-    /*
-    .ui.list > .item a,
-    .ui.list > .item .description {
-      color: rgba(255,255,255,0.8) !important;
-    }
-
-    .ui.divided.list > .item {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    }
-    */ }
+  color: #fff; }
   .home .events h1 {
     font-family: 'Poiret One', cursive; }
   .home .events .ui.list > .item {
