@@ -1,25 +1,135 @@
 <div class="navbar noselect">
   <div class="ui grid">
-    <div class="three wide column">
-      <a ui-sref="home">
-        <img show-sidebar class="hvr-grow nav-button" src="assets/img/logo_white_no_words.png" alt="">
-      </a>
-    </div>
-    <div class="thirteen wide column right aligned">
-      <div class="hvr-grow nav-link" ui-sref="catalogue" id="nav-cat">
-        CATALOGUE
-      </div>&nbsp;&nbsp;
-      <div class="hvr-grow nav-link" ui-sref="about" id="nav-about">
-        ABOUT
-      </div>&nbsp;&nbsp;
-      <div class="hvr-grow nav-link" ui-sref="contact" id="nav-contact">
-        CONTACT
+    <!--Persistent Nav-->
+    <div class="row">
+      <div class="two wide column">
+        <a ui-sref="home">
+          <img show-sidebar class="hvr-float nav-button" src="assets/img/logo_white_no_words.png" alt="">
+        </a>
       </div>
-    </div>
+      <div class="fourteen wide column ui grid">
+        <div class="row">
+        <!--<div class="hvr-grow nav-link" ui-sref="catalogue" id="nav-cat">
+          CATALOGUE
+        </div>&nbsp;&nbsp;
+        <div class="hvr-grow nav-link" ui-sref="about" id="nav-about">
+          ABOUT
+        </div>&nbsp;&nbsp;
+        <div class="hvr-grow nav-link" ui-sref="contact" id="nav-contact">
+          CONTACT
+        </div>
+      -->
+          <div class="column right floated right aligned">
+            <i class="big white chevron down icon"></i>
+          </div>
+        </div>
+        
+        <div class="row" id="expandedNav">
+          <hr />
+          <div class="four wide column">
+            <!--First layer of stuff-->
+            <div class="ui selection list">
+              <div class="item">
+                <span ui-sref="catalogue" id="nav-cat">
+                  Catalogue
+                </span>
+              </div>
+              <div class="item">
+                <span ui-sref="about" id="nav-about">
+                  About
+                </span>
+              </div>
+              <div class="item">
+                <span ui-sref="contact" id="nav-contact">
+                  Contact
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="four wide column">
+            <!--Second layer of stuff-->
+            <div class="ui selection list">
+              <div class="item">
+                Lower 1
+              </div>
+              <div class="item">
+                Lower 2
+              </div>
+              <div class="item">
+                Lower 3
+              </div>
+            </div>
+          </div>
+          
+          <div class="four wide column">
+            <!--Third layer of stuff-->
+            <div class="ui selection list">
+              <div class="item">
+                Even Lower 1
+              </div>
+              <div class="item">
+                Even Lower 2
+              </div>
+              <div class="item">
+                Even Lower 3
+              </div>
+            </div>
+          </div>
+          
+          <div class="four wide column">
+            <!--Fourth layer of stuff-->
+            <div class="ui selection list">
+              <div class="item">
+                Lowest 1
+              </div>
+              <div class="item">
+                Lowest 2
+              </div>
+              <div class="item">
+                Lowest 3
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>    
   </div>
 </div>
 
 <div ui-view class="well"></div>
+
+<script>
+  $("#expandedNav").hide();
+  
+  $(".navbar").hover(function(){ 
+    $(this).css("background-color", "white");
+    $(this).css('position', 'absolute');
+    $(this).css('z-index', 9999); 
+    //var chevronIcon = $(this).find("i");
+    
+    //Chevron toggle
+    /*if(chevronIcon.hasClass("down") && chevronIcon.hasClass("chevron")){
+      $(this).removeClass("down").addClass("left");
+    }else{
+      $(this).removeClass("left").addClass("down");
+    }
+    */
+    
+    var navLogo = $(this).find("img");
+    
+    navLogo.src = '../assets/img/logo_words_invert';
+    
+    $("#expandedNav").slideToggle("slow");
+    
+    $(this).mouseleave(function(){
+      $(this).css("background-color", "transparent");
+    });
+  });
+  
+
+</script>
 
 <!-- SEMANTIC UI SIDEBAR
 <div class="nav">
