@@ -79,7 +79,7 @@ p {
     cursor: pointer; }
 
 .catalogue {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.5);
   margin: 0 5em 5em;
   padding-top: 0%; }
   .catalogue h1 {
