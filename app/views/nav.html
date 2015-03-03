@@ -20,7 +20,7 @@
         </div>
       -->
           <div class="column right floated right aligned">
-            <i class="big white chevron down icon"></i>
+            <i id="ddChevron" class="big white chevron down icon"></i>
           </div>
         </div>
         
@@ -102,30 +102,20 @@
 
 <script>
   $("#expandedNav").hide();
-  
-  $(".navbar").hover(function(){ 
-    $(this).css("background-color", "white");
-    $(this).css('position', 'absolute');
-    $(this).css('z-index', 9999); 
-    //var chevronIcon = $(this).find("i");
+    //navLogo.src = '../assets/img/logo_words_invert';
     
-    //Chevron toggle
-    /*if(chevronIcon.hasClass("down") && chevronIcon.hasClass("chevron")){
-      $(this).removeClass("down").addClass("left");
-    }else{
-      $(this).removeClass("left").addClass("down");
-    }
-    */
+    //alert.(""+navLogo);
     
-    var navLogo = $(this).find("img");
-    
-    navLogo.src = '../assets/img/logo_words_invert';
-    
-    $("#expandedNav").slideToggle("slow");
-    
-    $(this).mouseleave(function(){
-      $(this).css("background-color", "transparent");
-    });
+  $("#ddChevron").mouseenter(function(){
+    $("#expandedNav").slideDown();
+     $(".navbar").css("background-color", "white");
+    $(".navbar").css('position', 'absolute');
+    $(".navbar").css('z-index', 9999); 
+  });
+
+  $(".navbar").mouseleave(function(){
+    $(this).css("background-color", "transparent");
+    $("#expandedNav").slideUp();
   });
   
 
