@@ -25,6 +25,10 @@ angular.module('oseas.controllers', [])
 .controller('ProductCtrl', function($scope, $rootScope, $location) {
 })
 
+.controller('OrderFormCtrl', function($scope, $rootScope, $location) {
+  
+})
+
 .controller('AboutCtrl', function($scope, $rootScope, $location) {
 
   setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
