@@ -1,13 +1,26 @@
 
-<div class="orderform below-navbar noflicker">
-  <form class="ui inverted form">
+<div class="orderform fill-rest-of-page below-navbar noflicker">
+
+  <form class="ui small inverted form">
     <div class="ui breadcrumb">
             <i class="left white chevron icon divider"></i>
             <a class="section" ui-sref="product"> Back to Product</a>
     </div>  
 
-    <div class="two fields">
-      <div class="field">
+        <div class="ui small error form segment">
+          <div class="ui error message">
+            <div class="header">Terms of Service</div>
+            <ul class="list">
+              <li>All sales are final</li>
+              <li>No returns on final transactions</li>
+              <li>Filling out this form will just be emailed to the designer</li>
+              <li>You will receive a response no later than one week</li>
+            </ul>
+          </div>
+        </div>
+
+   <div class="two fields">
+      <div class="required field">
         <label>Name</label>
 
           <div class="two fields">
@@ -21,29 +34,47 @@
 
       </div>
     </div>
+ 
+      <div class="inline required fields">
+        <div class="field">
+          <label>Phone</label>
+          <br>
+          <input placeholder="(xxx)" type="text">
+        </div>
+        <div class=" field">
+          <input placeholder="xxx" type="text">
+        </div>
+        <div class="field">
+         <input placeholder="xxxx" type="text">
+        </div>
+      </div>
+<br>
+      <div class="required six wide field">
+        <label>Email</label>
+        <div class="ui icon input" >
+          <input placeholder="Email" type="text">
+          <i class="user icon"></i>
+        </div>
+      </div>
+    
 
-    <div class="ui input">
+
+    <div class="six wide field">
       <label>Item of Purchase</label>
       <input placeholder="What are you ordering?" type="text">
     </div>
 
-    <br>
+    
 
     <div class="field">
       <label>Special Requests</label>
       <textarea placeholder="Any special alterations?"></textarea>
     </div>
 
-    <div class="two fields">
-
-      <div class="required field">
-        <label>Email</label>
-        <div class="ui icon input">
-          <input placeholder="Email" type="text">
-          <i class="user icon"></i>
-        </div>
-      </div>
     
+
+
+  
 
       
    
@@ -51,13 +82,22 @@
     
 
     <div class="ui hidden divider"></div>
-    <div class="field">
+    <div class="required field">
       <div class="ui checkbox">
         <input name="hot-deals" type="checkbox">
-        <label>I agree to the <a href="#">Terms of Service</a>.</label>
+        <label>I agree to the Terms of Service</label>
+
+
       </div>
     </div>
    <div class="ui inverted button" >Submit</div>
   </form>
+
+  <script>
+  $('.ui.checkbox')
+    .checkbox()
+    ;
+  </script>
+    
 </div>
 
