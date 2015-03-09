@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://oseas-app:!oseas#@oseas.cf:27017/oseas');
 
 // Passport (User authentication) & Other Middleware
-/*
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
@@ -24,7 +23,6 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-*/
 
 app.use(express.static('app'));
 
@@ -36,6 +34,26 @@ app.all('*', function(req, res, next) {
 });
 
 // API Routes
+
+// GET: Check logged in
+app.get('/api/user', function(req, res) {
+	res.send(req.isAuthenticated() ? req.user : '0');
+});
+
+// POST: Log in
+app.post('/api/user/login', passport.authenticate('local'), function(req, res){
+  console.log("Received login request");
+  if (typeof req.user !== 'undefined')
+    res.send(req.user); 
+  else
+    res.send(401);
+});
+
+app.post('/api/user/logout', function(req, res){
+  req.logOut();
+  res.send(200);
+});
+
 
 app.set('port', process.env.PORT || 5000);
 

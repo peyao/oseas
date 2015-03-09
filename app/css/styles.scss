@@ -17,6 +17,41 @@
   animation-name: $effect;
 }
 
+// Phones
+@media screen and (min-width: 320px) {
+  .responsive-margins {
+    margin: 0 2em 2em;
+  } 
+}
+
+// Tablets
+@media screen and (min-width: 768px) {
+  .responsive-margins {
+    margin: 0 5em 5em;
+  } 
+}
+
+// Desktop screens
+@media screen and (min-width: 1224px) {
+  .responsive-margins {
+    margin: 0 10em 10em;
+  }
+}
+
+// True HD+
+@media screen and (min-width: 1824px) {
+  .responsive-margins {
+    margin: 0 20em 20em;
+  }
+}
+
+// QHD+
+@media screen and (min-width: 2000px) {
+  .responsive-margins {
+    margin: 0 25em 25em;
+  }
+}
+
 body {
   overflow: hidden;
 }
@@ -34,8 +69,8 @@ p {
   right: 0;
   left: 0;
 
-  margin-left: 7em;
-  margin-right: 5em;
+  //margin-left: 7em;
+  //margin-right: 0em;
   padding-bottom: 15px;
   padding-top: 15px;
 
@@ -57,39 +92,6 @@ p {
 
   img {
     border-radius: 3px;
-  }
-
-  .hvr-underline-from-center {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    box-shadow: 0 0 1px transparent;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    overflow: hidden;
-  }
-  .hvr-underline-from-center:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    right: 50%;
-    bottom: 0;
-    background: #fff;
-    height: 4px;
-    -webkit-transition-property: left, right;
-    transition-property: left, right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
-    left: 0;
-    right: 0;
   }
 
   .ui.inverted.basic.button.right.floated {
@@ -114,11 +116,11 @@ p {
 .home {
 
   .home-events {
-    position: fixed;
-    margin-top: 10em;
-    margin-left: 5em;
-  
     color: #fff;
+    margin-left: 5em;
+    margin-top: 10em;
+    position: fixed;
+  
 
     h1 {
       font-family: 'Poiret One', cursive; 
@@ -133,34 +135,24 @@ p {
 // catalogue.html
 .catalogue {
 
+  background: rgba(255, 255, 255, .5);
+  padding-top: 0%;
+
   h1 {
     color: #fff;
     font-family: 'Poiret One', cursive;
-  }
-
- 
-
-  background: rgba(255, 255, 255, .5);
-  margin: 0 5em 5em;
-  padding-top: 0%;
-
-  .product {
-    //outline: 1px solid #616161;
   }
 }
 
 .orderform {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
-  padding-top: 0%;
-
   color: #fff;
+  padding-top: 0%;
 }
 
 // contact.html
 .contact {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
   padding-top: 0%;
 
   .ui.inverted.segment {
@@ -171,7 +163,6 @@ p {
 // about.html
 .about {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
   padding-top: 0%;
 
   .description {
@@ -182,45 +173,42 @@ p {
 // events.html
 .events {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
-  padding-top: 0% 2% 2% 2%;
-    img{
-      width: 100%
-    }
-
   color: #fff;
+  padding-top: 0% 2% 2% 2%;
+    
+  img {
+    width: 100%;
+  }
 }
 
 // event.html
 .event {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
-  padding-top: 0%;
-
   color: #fff;
+  padding-top: 0%;
 }
 
 // product.html
 .product {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
-  padding-top: 0%;
-
   color: #fff;
+  padding-top: 0%;
 }
 
 // admin.html
 .admin {
   background: rgba(0, 0, 0, .6);
-  margin: 0 5em 5em;
   padding-top: 0%;
+
+  .ui.inverted.segment {
+    background: rgba(0, 0, 0, .5) !important;
+  }
 
   color: #fff;
 }
 
-//orderform.html
 .word {
-  color:white;
+  color: #fff;
 }
 
 // Utility Classes
