@@ -3,15 +3,17 @@
     <!--Product Picture-->
     <div class="column" align="left">
       <div class="ui breadcrumb">
-        <i class="left chevron icon divider"></i>
+        <i class="left white chevron icon divider"></i>
         <a class="section" ui-sref="catalogue"> Back to Catalogue</a>
       </div>
       <br><br><br>
       <img src="assets/img/xman.jpg" alt="about" class="ui large image">
       <br><br>
-      <img class="ui top aligned tiny image" src="assets/img/front.jpg">
-      <img class="ui middle aligned tiny image" src="assets/img/back.jpg">
-      <img class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
+      
+        <img class="ui top aligned tiny image" src="assets/img/front.jpg">
+        <img class="ui middle aligned tiny image" src="assets/img/back.jpg">
+        <img class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
+
     </div> 
 
 
@@ -23,10 +25,10 @@
       <div class="column">
         <div align="right">
           <div class="ui breadcrumb">
-            <i class="left chevron icon divider"></i>
+            <i class="left white chevron icon divider"></i>
             <a class="section"> Prev | </a>
             <a class="section">Next</a>
-            <i class="right chevron icon divider"></i>
+            <i class="right white chevron icon divider"></i>
           </div>  
         </div>   
         
@@ -40,7 +42,9 @@
 
         <font size="32">Look #3</font>
         <div class="ui divider"></div>
-        <div class="ui selection dropdown">
+
+    <!--    
+        <div class="ui dropdown">
           <input name="color" type="hidden">
           <div class="default text">Color</div>
           <i class="dropdown icon"></i>
@@ -49,8 +53,17 @@
             <div class="item" data-value="0">Prism White</div>
           </div>
         </div>
-
+-->
+          <div class="ui dropdown">
+          <div class="text">Color</div>
+          <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item">Royal Blue</div>
+              <div class="item">Prism White</div>         
+            </div>
+          </div>
         <body>
+
           <script>
             $('.ui.dropdown')
             .dropdown()
@@ -69,14 +82,18 @@
             <div class="item">3</div>          
           </div>
         </div>
-        <br><br>
 
+        <br><br>
+<!--
         <div class="ui vertical animated button">
           <div class="hidden content" ><a ui-sref="orderform">Buy</a></div>
-          <div class="visible content" >
+          <div class="visible content">
             <i class="shop icon"></i>
           </div>
         </div>
+      -->
+
+        <div class="ui inverted button" ui-sref="orderform">Buy Now</div>
 
         <div class="ui horizontal divider">
           <p color="white">Info</p>
@@ -84,29 +101,18 @@
 
         <p align="center">This section will be a description of the clothing in detail. It may contain what type of material is being used and for what occasion this item would be worn to. For example: This blue satin dress made with material imported from South Korea, the color is bold and is sure to make a presence at any red carpet event!</p>
 
-        <div class="ui divider"></div>
+   
 
-        <div align="center">
-          <div class="circular ui icon button"> <a href="https://www.facebook.com/StudioByOseasVillatoro">
-            <i class="facebook icon"></i></a>
-          </div>
-
-          <div class="circular ui icon button"><a href="https://instagram.com/designeroseasv">
-            <i class="instagram icon"></i></a>
-          </div>
-
-          <div class="circular ui icon button">
-            <i class="twitter icon"></i>
-          </div>
-        </div>
+        
 
         <div class="ui divider"></div>
         Other pieces of this look:
         <br>
-
-        <img class="ui top aligned tiny image" src="assets/img/steam.jpg">
-        <img class="ui middle aligned tiny image" src="assets/img/banana.jpg">
-        <img class="ui bottom aligned tiny image" src="assets/img/bloo.jpg">
+        <br>
+        
+          <img class="ui top aligned tiny image" src="assets/img/steam.jpg">
+          <img class="ui middle aligned tiny image" src="assets/img/banana.jpg">
+          <img class="ui bottom aligned tiny image" src="assets/img/bloo.jpg">
 
       </div> 
     </div>
