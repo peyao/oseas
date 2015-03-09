@@ -10,12 +10,20 @@
       <img src="assets/img/xman.jpg" alt="about" class="ui large image">
       <br><br>
       
-        <img class="ui top aligned tiny image" src="assets/img/front.jpg">
-        <img class="ui middle aligned tiny image" src="assets/img/back.jpg">
-        <img class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
+        <img id="1" class="ui top aligned tiny image" src="assets/img/front.jpg">
+        <img id="2" class="ui middle aligned tiny image" src="assets/img/back.jpg">
+        <img id="3" class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
 
     </div> 
-
+<script>
+$('#btnClick').on('click',function(){
+    if($('#1').css('display')!='none'){
+    $('#2').html('Here is my dynamic content').show().siblings('div').hide();
+    }else if($('#2').css('display')!='none'){
+        $('#1').show().siblings('div').hide();
+    }
+});
+</script>
 
 
 
