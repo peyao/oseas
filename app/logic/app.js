@@ -71,7 +71,14 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
       url: '/contact',
       templateUrl: 'views/contact.html',
       controller: 'ContactCtrl'
-    });
+    })
+
+    .state('admin', {
+      parent: 'nav',
+      url: '/admin',
+      templateUrl: 'views/admin.html',
+      controller: 'AdminCtrl'
+    })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');

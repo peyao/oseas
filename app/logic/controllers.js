@@ -46,6 +46,10 @@ angular.module('oseas.controllers', [])
 .controller('EventCtrl', function($scope, $rootScope, $location) {
 })
 
+.controller('AdminCtrl', function($scope, $rootScope, $location) {
+  
+})
+
 .directive('fade', function() {
 	  return {
 			link: function(scope, element, attrs) {
