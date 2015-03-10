@@ -179,6 +179,14 @@ p {
   img {
     width: 100%;
   }
+  
+  .column{
+    -webkit-transition: width 0.8s ease, margin 0.8s ease;
+    -moz-transition: width 0.8s ease, margin 0.8s ease;
+    -o-transition: width 0.8s ease, margin 0.8s ease;
+    transition: width 0.8s ease, margin 0.8s ease;
+  }
+  
 }
 
 // event.html

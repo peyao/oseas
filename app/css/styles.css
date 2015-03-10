@@ -91,6 +91,11 @@ p {
   padding-top: 0% 2% 2% 2%; }
   .events img {
     width: 100%; }
+  .events .column {
+    -webkit-transition: width 0.8s ease, margin 0.8s ease;
+    -moz-transition: width 0.8s ease, margin 0.8s ease;
+    -o-transition: width 0.8s ease, margin 0.8s ease;
+    transition: width 0.8s ease, margin 0.8s ease; }
 
 .event {
   background: rgba(0, 0, 0, 0.6);
