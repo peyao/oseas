@@ -1,0 +1,89 @@
+<div class="admin below-navbar noflicker fill-rest-of-page noselect no-i-bar responsive-margins">
+
+  <!-- Section One -->
+  <form id="login-form" ng-submit="login(credentials)" class="ui fluid form inverted segment">
+    
+    <h4 class="ui inverted dividing header">Admin Login Credentials</h4>
+
+    <div class="two fields">
+
+      <div class="required field">
+        <div class="ui icon input">
+          <input type="text" ng-model="credentials.username" placeholder="Admin Username">
+          <i class="user icon"></i>
+        </div>
+      </div>
+
+      <div class="required field">
+        <div class="ui icon input">
+          <input type="password" ng-model="credentials.password" placeholder="Admin Password">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="ui animated inverted right floated green basic button">
+      <div class="visible content">Login</div>
+      <div class="hidden content">
+        <i class="right arrow icon"></i>
+      </div>
+    </button>
+
+    <div class="ui dimmer">
+      <div class="content">
+        <div class="center">
+          <h2 class="ui inverted icon green header">
+            <i class="check icon"></i>
+            Logged in!
+          </h2>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="ui basic modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Login Unsuccessful
+    </div>
+    <div class="content">
+      <div class="image">
+        <i class="warning sign icon"></i>
+      </div>
+      <div class="description">
+        <p>This page is for administrators only. If you are an Oseas administrator, please contact the creators of this website if you cannot access your admin account.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="fluid ui inverted buttons">
+        <div class="ui green basic inverted button">
+          OK
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END Section One -->
+
+  <!-- Section Two -->
+  <div class="ui fluid form inverted segment" ng-show="loggedIn">
+    <div class="ui grid">
+
+      <div class="row">
+        <div class="left floated column">
+          <p>Hello</p>
+        </div>
+        <div class="right floated column">
+          <div class="ui red basic inverted button right floated" ng-click="logout()">
+            Logout
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- END Section Two -->
+
+</div>
+

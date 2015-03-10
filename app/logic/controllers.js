@@ -46,6 +46,59 @@ angular.module('oseas.controllers', [])
 .controller('EventCtrl', function($scope, $rootScope, $location) {
 })
 
+.controller('AdminCtrl', function($scope, $rootScope, $location, UserSessionService) {
+
+  $('#login-form')
+    .dimmer({
+      closable: false
+    });
+
+  UserSessionService.checkLoggedIn(function(user) {
+
+    if (user !== null) {
+      console.log('Dash: User has a session.');
+
+      $scope.loggedIn = true;
+      $rootScope.loggedIn = true;
+
+      $('#login-form')
+        .dimmer('show');
+    }
+  });
+  
+  $scope.login = function(credentials) {
+    UserSessionService.logIn(credentials.username, credentials.password, function(status) {
+      if (status) {
+        console.log("Login successful");
+        $('#login-form')
+          .dimmer('show');
+
+        $scope.loggedIn = true;
+        $rootScope.loggedIn = true;
+      }
+      else {
+        console.log("Login failed");
+        $('.basic.modal').modal('show');
+      }
+    });
+  };
+
+  $scope.logout = function() {
+    UserSessionService.logOut(function() {
+      $scope.loggedIn = false;
+      $rootScope.loggedIn = false;
+
+      $('#login-form').dimmer('hide');
+      $scope.credentials.username = "";
+      $scope.credentials.password = "";
+
+    });
+  };
+
+  
+
+})
+
 .directive('fade', function() {
 	  return {
 			link: function(scope, element, attrs) {

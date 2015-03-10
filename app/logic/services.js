@@ -1,28 +1,40 @@
-var servicesModule = angular.module('oseas.services', [])
+var servicesModule = angular.module('oseas.services', []);
 
-/**
- * A simple example service that returns some data.
- */
+servicesModule.factory('UserSessionService', function($http){
 
-servicesModule.factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
+  var user = {};
 
   return {
-    all: function() {
-      return friends;
+    checkLoggedIn: function(callback) {
+      $http.get('/api/user').
+        success(function(data, status, headers, config) {
+          if (typeof data.username !== 'undefined') {
+            console.log ("data.username: " + data.username);
+            user = data;
+            callback(data);
+          }
+          else {
+            callback(null);
+          }
+        });
     },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
+
+    logIn: function(username, password, callback) {
+      $http.post('/api/user/login', {username: username, password: password}).
+        success(function(data, status) {
+          user = data; // Set our local variable
+          callback(true);
+        }).
+        error(function(data, status) {
+          callback(false);
+        });
+    },
+
+    logOut: function(callback) {
+      $http.post('/api/user/logout')
+      .success(function(status) {
+          callback(true);
+        });
     }
   };
 });
-

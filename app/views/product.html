@@ -1,4 +1,4 @@
-<div class="about below-navbar noflicker noselect no-i-bar">
+<div class="about below-navbar noflicker noselect no-i-bar responsive-margins">
   <div class="ui two column padded page grid" align="center">
     <!--Product Picture-->
     <div class="column" align="left">
@@ -7,15 +7,49 @@
         <a class="section" ui-sref="catalogue"> Back to Catalogue</a>
       </div>
       <br><br><br>
-      <img src="assets/img/xman.jpg" alt="about" class="ui large image">
+      
+      <div align="center">
+      <img id="my_main" src="assets/img/xman.jpg" alt="about" class="ui medium image">
       <br><br>
       
-        <img class="ui top aligned tiny image" src="assets/img/front.jpg">
-        <img class="ui middle aligned tiny image" src="assets/img/back.jpg">
-        <img class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
-
+        <img id="my_image" class="ui top aligned tiny image" src="assets/img/front.jpg">
+        <img id="my_image2" class="ui middle aligned tiny image" src="assets/img/back.jpg">
+        <img id="my_image3" class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
+        <img id="my_image4" class="ui bottom aligned tiny image" src="assets/img/xman.jpg">
+      </div>
     </div> 
 
+<script>
+$('#my_image').on({
+  'click':function(){
+
+$('#my_main').attr('src','assets/img/front.jpg');
+}
+
+});
+
+    $('#my_image2').on({
+      'click':function(){
+
+    $('#my_main').attr('src','assets/img/back.jpg');
+      }
+    });
+
+        $('#my_image3').on({
+          'click':function(){
+
+        $('#my_main').attr('src','assets/img/oseas_profile.jpg');
+          }
+        });
+
+            $('#my_image4').on({
+              'click':function(){
+
+            $('#my_main').attr('src','assets/img/xman.jpg');
+              }
+            });
+
+</script>
 
 
 
@@ -106,6 +140,7 @@
         
 
         <div class="ui divider"></div>
+        <br><br><br><br><br><br>
         Other pieces of this look:
         <br>
         <br>

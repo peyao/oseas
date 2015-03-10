@@ -1,7 +1,7 @@
-<div class="navbar noselect">
+<div class="navbar noselect responsive-margins">
   <div class="ui grid">
     <!--Persistent Nav-->
-    <!--Code for social media by Jen 
+    <!--Code for social media by Jen [not used]
 
     <div align="center">
           <div class="circular ui icon button"> <a href="https://www.facebook.com/StudioByOseasVillatoro">
@@ -63,7 +63,6 @@
               </div>
               <div class="item">
                 <span class="nav-link">Lower 3</span>
-              </div>
             </div>
           </div>
           
@@ -71,13 +70,13 @@
             <!--Third layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                Even Lower 1
+                
               </div>
               <div class="item">
-                Even Lower 2
+                
               </div>
               <div class="item">
-                Even Lower 3
+                
               </div>
             </div>
           </div>
@@ -86,13 +85,33 @@
             <!--Fourth layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                Lowest 1
+                
               </div>
               <div class="item">
-                Lowest 2
+                
               </div>
               <div class="item">
-                Lowest 3
+                
+              </div>
+              <div class="item">
+                
+              </div>
+              <div class="item">
+              </div>
+
+
+                
+          <div align="center">
+          <div class="circular ui icon button"> <a href="https://www.facebook.com/StudioByOseasVillatoro">
+            <i class="facebook icon"></i></a>
+          </div>
+
+          <div class="circular ui icon button"><a href="https://instagram.com/designeroseasv">
+            <i class="instagram icon"></i></a>
+          </div>
+
+          
+        </div>
               </div>
             </div>
           </div>
@@ -129,6 +148,10 @@
     $("#mainNavEntries").css('z-index', 9999); 
   });
   
+  $("#nav-cat").mouseenter(function(){
+    
+  });
+  
   $(".navbar").mouseleave(function(){
     $("#mainNavEntries").css("background-color", "transparent");
     $("#expandedNav").hide();
@@ -137,42 +160,3 @@
   
 
 </script>
-
-<!-- SEMANTIC UI SIDEBAR
-<div class="nav">
-  <div class="ui inverted horizontal top sidebar menu">
-    <div class="item">
-      <div class="ui input"><input placeholder="Search..." type="text"></div>
-    </div>
-    <div class="item">
-      <i class="home icon"></i> Home
-      <div class="menu">
-        <a class="active item">Search</a>
-        <a class="item">Add</a>
-        <a class="item">Remove</a>
-      </div>
-    </div>
-    <a class="item">
-      <i class="grid layout icon"></i> Browse
-    </a>
-    <a class="item">
-      <i class="mail icon"></i> Messages
-    </a>
-    <div class="ui dropdown item">
-      More <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-        <a class="item"><i class="globe icon"></i> Choose Language</a>
-        <a class="item"><i class="settings icon"></i> Account Settings</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="pusher mdc-bg-grey-800">
-    <div class="navbar">
-      <img show-sidebar class="hvr-grow nav-button" src="assets/img/logo_no_words.png" alt="">
-    </div>
-    <div ui-view></div>
-  </div>
-</div>
--->
