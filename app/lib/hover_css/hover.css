@@ -1030,10 +1030,12 @@
 /* Back Pulse */
 @-webkit-keyframes hvr-back-pulse {
   50% {
-    background-color: rgba(32, 152, 209, 0.75); } }
+    /*background-color: rgba(32, 152, 209, 0.75); } }*/
+    background-color: rgba(0, 0, 0, 0.5); } }
 @keyframes hvr-back-pulse {
   50% {
-    background-color: rgba(32, 152, 209, 0.75); } }
+    /*background-color: rgba(32, 152, 209, 0.75); } }*/
+    background-color: rgba(0, 0, 0, 0.5); } }
 .hvr-back-pulse {
   display: inline-block;
   vertical-align: middle;
@@ -1059,8 +1061,8 @@
     animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
-    background-color: #fff;
-    background-color: #2098d1;
+    background-color: transparent;
+    /*background-color: #2098d1;*/
     color: white; }
 
 /* Sweep To Right */

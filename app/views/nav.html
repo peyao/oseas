@@ -1,7 +1,7 @@
 <div class="navbar noselect responsive-margins">
   <div class="ui grid">
     <!--Persistent Nav-->
-    <!--Code for social media by Jen 
+    <!--Code for social media by Jen [not used]
 
     <div align="center">
           <div class="circular ui icon button"> <a href="https://www.facebook.com/StudioByOseasVillatoro">
@@ -25,16 +25,6 @@
       </div>
       <div id="mainNavEntries" class="thirteen wide column ui grid">
         <div class="row">
-        <!--<div class="hvr-grow nav-link" ui-sref="catalogue" id="nav-cat">
-          CATALOGUE
-        </div>&nbsp;&nbsp;
-        <div class="hvr-grow nav-link" ui-sref="about" id="nav-about">
-          ABOUT
-        </div>&nbsp;&nbsp;
-        <div class="hvr-grow nav-link" ui-sref="contact" id="nav-contact">
-          CONTACT
-        </div>
-      -->
           <div class="column left floated right aligned">
             <i id="ddChevron" class="big white chevron down icon"></i>
           </div>
@@ -46,86 +36,78 @@
             <!--First layer of stuff-->
             <div class="ui selection list">
               <div ui-sref="catalogue" id="nav-cat" class="item">
-                  Catalogue
+                <span class="nav-link">Catalogue</span>
               </div>
               <div ui-sref="about" id="nav-about" class="item">
-                  About
+                <span class="nav-link">About</span>
               </div>
               <div class="item" ui-sref="contact" id="nav-contact">
-                  Contact
+                <span class="nav-link">Contact</span>
               </div>
               
               <div class="item" ui-sref="events" id="nav-events">
-                  Events
+                <span class="nav-link">Events</span>
               </div>
               
             </div>
           </div>
-         
-          <div class="four wide column">
+          
+          <div class="four wide column level2">
             <!--Second layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                
+                <span class="nav-link">Level2</span>
               </div>
               <div class="item">
-               
+                 <span class="nav-link">Level2</span>
               </div>
               <div class="item">
-                
+                 <span class="nav-link">Level2</span>
               </div>
             </div>
           </div>
           
-          <div class="four wide column">
+          <div class="four wide column level3">
             <!--Third layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                
+                <span class="nav-link">Level3</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level3</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level3</span>
               </div>
             </div>
           </div>
           
-          <div class="four wide column">
+          <div class="four wide column level4">
             <!--Fourth layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
-                
-              </div>
-              <div class="item">
-              </div>
-
-
-                
-          <div align="center">
-          <div class="circular ui icon button"> <a href="https://www.facebook.com/StudioByOseasVillatoro">
-            <i class="facebook icon"></i></a>
-          </div>
-
-          <div class="circular ui icon button"><a href="https://instagram.com/designeroseasv">
-            <i class="instagram icon"></i></a>
-          </div>
-
-          
-        </div>
+                <span class="nav-link">Level4</span>
               </div>
             </div>
           </div>
+          
+          <div class="sixteen wide column right aligned">
+            <a href="https://www.facebook.com/StudioByOseasVillatoro">
+              <i class="white large facebook icon"></i>
+            </a>
+            <a href="https://instagram.com/designeroseasv">
+              <i class="white large instagram icon"></i>
+            </a>
+          </div>          
         </div>
         
       </div>
@@ -137,58 +119,36 @@
 
 <script>
   $("#expandedNav").hide();
+  
+  $(".level2").hide();
+  $(".level3").hide();
+  $(".level4").hide();
     //navLogo.src = '../assets/img/logo_words_invert';
     
   $("#ddChevron").mouseenter(function(){
     $("#expandedNav").slideDown();
-     $("#mainNavEntries").css("background-color", "white");
+    $("#expandedNav").css("background-color", "black");
     $("#mainNavEntries").css('position', 'absolute');
     $("#mainNavEntries").css('z-index', 9999); 
   });
-
+  
+  $("#nav-cat").mouseenter(function(){
+    $(".level2").slideDown().mouseenter(function(){
+      $(".level3").slideDown().mouseenter(function(){
+        $(".level4").slideDown();
+      });
+    });
+    
+  });
+  
   $(".navbar").mouseleave(function(){
     $("#mainNavEntries").css("background-color", "transparent");
     $("#expandedNav").hide();
+    $(".level2").hide();
+    $(".level3").hide();
+    $(".level4").hide();
   });
+
   
 
 </script>
-
-<!-- SEMANTIC UI SIDEBAR
-<div class="nav">
-  <div class="ui inverted horizontal top sidebar menu">
-    <div class="item">
-      <div class="ui input"><input placeholder="Search..." type="text"></div>
-    </div>
-    <div class="item">
-      <i class="home icon"></i> Home
-      <div class="menu">
-        <a class="active item">Search</a>
-        <a class="item">Add</a>
-        <a class="item">Remove</a>
-      </div>
-    </div>
-    <a class="item">
-      <i class="grid layout icon"></i> Browse
-    </a>
-    <a class="item">
-      <i class="mail icon"></i> Messages
-    </a>
-    <div class="ui dropdown item">
-      More <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item"><i class="edit icon"></i> Edit Profile</a>
-        <a class="item"><i class="globe icon"></i> Choose Language</a>
-        <a class="item"><i class="settings icon"></i> Account Settings</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="pusher mdc-bg-grey-800">
-    <div class="navbar">
-      <img show-sidebar class="hvr-grow nav-button" src="assets/img/logo_no_words.png" alt="">
-    </div>
-    <div ui-view></div>
-  </div>
-</div>
--->

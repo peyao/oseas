@@ -73,11 +73,11 @@ p {
   //margin-right: 0em;
   padding-bottom: 15px;
   padding-top: 15px;
-
+  
   .nav-link {
     color: #fff; // white
     font-family: 'Poiret One', cursive;
-    font-size: 200%;
+    //font-size: 200%;
     cursor: pointer;
   }
 
@@ -174,11 +174,31 @@ p {
 .events {
   background: rgba(0, 0, 0, .6);
   color: #fff;
-  padding-top: 0% 2% 2% 2%;
-    
-  img {
+  padding: 0% 5% 0% 5%;
+  
+  .hvr-back-pulse:hover{
+     //background-color:black;
+  }
+  
+  h2{
+    width:100%; 
+  }
+  
+  #past img {
+    width: 80%;
+  }
+  
+  #future img{
     width: 100%;
   }
+  
+  .column{
+    -webkit-transition: width 0.8s ease, margin 0.8s ease;
+    -moz-transition: width 0.8s ease, margin 0.8s ease;
+    -o-transition: width 0.8s ease, margin 0.8s ease;
+    transition: width 0.8s ease, margin 0.8s ease;
+  }
+  
 }
 
 // event.html
