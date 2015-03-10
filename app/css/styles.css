@@ -109,6 +109,17 @@ p {
   color: #fff; }
   .admin .ui.inverted.segment {
     background: rgba(0, 0, 0, 0.5) !important; }
+  .admin .ui.top.attached.tabular.menu {
+    background: rgba(255, 255, 255, 0.5) !important; }
+  .admin .image-upload-button {
+    height: 0px;
+    overflow: hidden; }
+  .admin .drop-box {
+    border: 3px dashed #fff;
+    height: 4em;
+    text-align: center; }
+  .admin .dragover {
+    border: 3px dashed #3B83C0; }
 
 .word {
   color: #fff; }

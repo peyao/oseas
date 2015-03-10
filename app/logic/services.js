@@ -1,6 +1,6 @@
 var servicesModule = angular.module('oseas.services', []);
 
-servicesModule.factory('UserSessionService', function($http){
+servicesModule.factory('UserSessionService', function($http) {
 
   var user = {};
 
@@ -35,6 +35,56 @@ servicesModule.factory('UserSessionService', function($http){
       .success(function(status) {
           callback(true);
         });
+    }
+  };
+});
+
+servicesModule.factory('PublishContentService', function($http, $upload) {
+
+  return {
+
+    publishProduct: function(name, category, price, description, composition, 
+        care, modelHeight, modelSize, sizeSmall, sizeMedium, sizeLarge, callback) {
+
+      $http.post('/api/publish/product', {
+        name        : name,
+        category    : category,
+        price       : price,
+        description : description,
+        composition : composition,
+        care        : care,
+        modelHeight : modelHeight,
+        modelSize   : modelSize,
+        sizeSmall   : sizeSmall,
+        sizeMedium  : sizeMedium,
+        sizeLarge   : sizeLarge
+      }).success(function(status) {
+        callback(true);
+      }).error(function(status) {
+        callback(false);
+      });
+    },
+
+    publishProductImage: function(files, callback) {
+      if (files && files.length) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
+          $upload.upload({
+            url: '/api/publish/product/image',
+            file: file
+          }).progress(function(evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+          }).success(function (data, status, headers, config) {
+            callback(config.file.name);
+            //console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+          });
+        }
+      }
+    },
+    
+    publishEvent: function() {
+
     }
   };
 });

@@ -1,9 +1,9 @@
 <div class="admin below-navbar noflicker fill-rest-of-page noselect no-i-bar responsive-margins">
 
-  <!-- Section One -->
+  <!-- Section Login -->
   <form id="login-form" ng-submit="login(credentials)" class="ui fluid form inverted segment">
     
-    <h4 class="ui inverted dividing header">Admin Login Credentials</h4>
+    <h3 class="ui inverted dividing header">Admin Login Credentials</h3>
 
     <div class="two fields">
 
@@ -23,10 +23,10 @@
 
     </div>
 
-    <button class="ui animated inverted right floated green basic button">
+    <button class="fluid ui animated inverted right floated green button">
       <div class="visible content">Login</div>
       <div class="hidden content">
-        <i class="right arrow icon"></i>
+        <i class="sign in icon"></i>
       </div>
     </button>
 
@@ -35,7 +35,7 @@
         <div class="center">
           <h2 class="ui inverted icon green header">
             <i class="check icon"></i>
-            Logged in!
+            Logged in.
           </h2>
         </div>
       </div>
@@ -64,26 +64,188 @@
       </div>
     </div>
   </div>
-  <!-- END Section One -->
+  <!-- END Section Login -->
 
-  <!-- Section Two -->
-  <div class="ui fluid form inverted segment" ng-show="loggedIn">
-    <div class="ui grid">
+  <!-- Section Admin Console -->
+  <div ng-show="loggedIn">
+    <div class="ui top attached tabular menu">
+      <a class="active item" data-tab="catalogue"><i class="shop icon"></i> Catalogue</a>
+      <a class="item" data-tab="events"><i class="calendar icon"></i> Events</a>
+      <a class="right floated item" ng-click="logout()"><i class="sign out icon"></i> Logout</a>
+    </div>
 
-      <div class="row">
-        <div class="left floated column">
-          <p>Hello</p>
-        </div>
-        <div class="right floated column">
-          <div class="ui red basic inverted button right floated" ng-click="logout()">
-            Logout
+    <!-- TAB Catalogue -->
+    <div class="ui bottom attached active tab" data-tab="catalogue">
+      <div class="ui fluid form inverted segment">
+        <h3 class="ui dividing inverted header">
+          Add a Product to the Catalogue
+        </h3>
+        <form class="ui form">
+
+          <div class="two fields">
+            <div class="required field">
+              <label>Product Name</label>  
+              <input type="text" placeholder="Blue Dress" ng-model="product.name">
+            </div>
+            <div class="field">
+              <div class="two fields">
+                <div class="required field">
+                  <label>Category</label>
+                  <select class="ui dropdown" ng-model="product.category">
+                    <option value="">Dress? Top? Bottom?</option>
+                    <option value="0">Dress</option>
+                    <option value="1">Top</option>
+                    <option value="2">Bottom</option>
+                  </select>
+                </div>
+                <div class="required field">
+                  <label>Price</label>
+                  <input type="text" placeholder="$200.00" ng-model="product.price">
+                </div>
+              </div>
+            </div>
           </div>
+
+          <div class="required field">
+            <label>Description</label>
+            <textarea ng-model="product.description"></textarea>
+          </div>
+
+          <div class="two fields">
+            <div class="required field">
+              <label>Composition</label>
+              <input type="text" placeholder="Silk 90%, Cotton 5%, Other material 5%" ng-model="product.composition">
+            </div>
+            <div class="required field">
+              <label>Care</label>
+              <input type="text" placeholder="Dry clean only, Other directions." ng-model="product.care">
+            </div>
+          </div>
+
+          <div class="three fields">
+            <div class="field">
+              <label>Model Height</label>
+              <input type="text" placeholder="170cm" ng-model="product.model.height">
+            </div>
+            <div class="field">
+              <label>Model Size</label>
+              <select class="ui dropdown" ng-model="product.model.size">
+                <option value="">Size the model is wearing...</option>
+                <option value="0">Small</option>
+                <option value="1">Medium</option>
+                <option value="2">Large</option>
+              </select>
+            </div>
+            <div class="required field">
+              <label>Sizes Available</label>
+              <div class="three fields">
+                <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="size-available-small" ng-model="product.size.small">
+                    <label>Small</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="size-available-medium" ng-model="product.size.medium">
+                    <label>Medium</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="ui checkbox">
+                    <input type="checkbox" name="size-available-large" ng-model="product.size.large">
+                    <label>Large</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--
+          <div class="image-upload-button">
+            <input type="file" id="imageFile" name="imageFile" fileread="product.image">
+          </div>
+          -->
+
+          <div class="ui grid">
+            <div class="row">
+              <div class="seven wide column">
+                <!--
+                <div class="fluid ui inverted red button" ng-click="chooseFile()">Select Image</div> 
+                -->
+                <div ng-file-drop ng-model="files" class="drop-box"
+                    drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+                    accept=".jpg,.png">
+                  Drop .png or .jpg files here.
+                </div>
+              </div>
+              <div class="nine wide column">
+                <div class="fluid ui inverted yellow button" ng-click="publishCatalogue(product)">Publish</div> 
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+    <!-- END TAB Catalogue -->
+
+    <!-- TAB Events -->
+    <div class="ui bottom attached tab" data-tab="events">
+      <div class="ui fluid form inverted segment">
+        <h3 class="ui dividing inverted header">
+          Add an Event
+        </h3>
+
+        <form class="ui form">
+          <div class="two fields">
+            <div class="required field">
+              <label>Event Name</label>
+              <input type="text" placeholder="FWSD 2014" ng-model="event.name">
+            </div>
+            <div class="required field">
+              <label>Date</label>
+              <input type="text" placeholder="Jan 1, 2014" ng-model="event.name">
+            </div>
+          </div>
+
+          <div class="required field">
+            <label>Description</label>
+            <textarea ng-model="event.description"></textarea>
+          </div>
+
+          <div class="ui grid">
+            <div class="row">
+              <div class="seven wide column">
+                <div class="fluid ui inverted red button" ng-model="event.image">Select Image</div> 
+              </div>
+              <div class="nine wide column">
+                <div class="fluid ui inverted yellow button">Publish</div> 
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END TAB Events -->
+
+  </div>
+
+  <div class="ui fluid form inverted segment" ng-show="uploadedFiles.length">
+    <h3 class="ui dividing inverted header">
+      Uploaded Images
+    </h3>
+    <div class="ui inverted list">
+      <div class="item" ng-repeat="file in uploadedFiles">
+        <i class="right triangle icon"></i>
+        <div class="content">
+          <div class="header">{{ file }}</div>
         </div>
       </div>
-
     </div>
   </div>
-  <!-- END Section Two -->
+
+  <!-- END Section Admin Console -->
 
 </div>
 

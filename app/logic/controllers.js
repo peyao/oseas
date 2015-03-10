@@ -46,12 +46,37 @@ angular.module('oseas.controllers', [])
 .controller('EventCtrl', function($scope, $rootScope, $location) {
 })
 
-.controller('AdminCtrl', function($scope, $rootScope, $location, UserSessionService) {
+.controller('AdminCtrl', function($scope, $rootScope, $location, UserSessionService, PublishContentService) {
+
+  // TODO REMOVE THIS
+  $scope.loggedIn = true; // REMOVE THIS!
+
+  $scope.uploadedFiles = [];
 
   $('#login-form')
     .dimmer({
       closable: false
     });
+
+  $('select.dropdown')
+    .dropdown();
+
+  $('.ui.checkbox')
+    .checkbox();
+
+  $('.tabular.menu .item')
+    .tab({history: false});
+
+  $scope.chooseFile = function() {
+    $('#imageFile').click();
+  };
+
+  $scope.$watch('files', function () {
+    PublishContentService.publishProductImage($scope.files, function(uploadedFilename) {
+      $scope.uploadedFiles.push(uploadedFilename);
+    });
+
+  });
 
   UserSessionService.checkLoggedIn(function(user) {
 
@@ -95,9 +120,43 @@ angular.module('oseas.controllers', [])
     });
   };
 
-  
+  $scope.publishCatalogue = function (product) {
+
+    console.log('typeof product.image:' + (typeof product.image));
+
+    // First upload image
+    PublishContentService.publishProductImage(product.image, function(image) {
+      if (image) {
+        console.log('image uploaded successfully!: ' + image.url);
+
+      }
+    });
+  };
+
+  $scope.publishEvent = function (event) {
+
+  };
 
 })
+
+.directive('fileread', [function() {
+  return {
+    scope: {
+      fileread: "="
+    },
+    link: function (scope, element, attributes) {
+      element.bind("change", function (changeEvent) {
+        var reader = new FileReader();
+        reader.onload = function (loadEvent) {
+          scope.$apply(function() {
+            scope.fileread = loadEvent.target.result;
+          });
+        };
+        reader.readAsDataURL(changeEvent.target.files[0]);
+      });
+    }
+  };
+}])
 
 .directive('fade', function() {
 	  return {
