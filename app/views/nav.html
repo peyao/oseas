@@ -25,16 +25,6 @@
       </div>
       <div id="mainNavEntries" class="thirteen wide column ui grid">
         <div class="row">
-        <!--<div class="hvr-grow nav-link" ui-sref="catalogue" id="nav-cat">
-          CATALOGUE
-        </div>&nbsp;&nbsp;
-        <div class="hvr-grow nav-link" ui-sref="about" id="nav-about">
-          ABOUT
-        </div>&nbsp;&nbsp;
-        <div class="hvr-grow nav-link" ui-sref="contact" id="nav-contact">
-          CONTACT
-        </div>
-      -->
           <div class="column left floated right aligned">
             <i id="ddChevron" class="big white chevron down icon"></i>
           </div>
@@ -46,38 +36,38 @@
             <!--First layer of stuff-->
             <div class="ui selection list">
               <div ui-sref="catalogue" id="nav-cat" class="item">
-                  Catalogue
+                <span class="nav-link">Catalogue</span>
               </div>
               <div ui-sref="about" id="nav-about" class="item">
-                  About
+                <span class="nav-link">About</span>
               </div>
               <div class="item" ui-sref="contact" id="nav-contact">
-                  Contact
+                <span class="nav-link">Contact</span>
               </div>
               
               <div class="item" ui-sref="events" id="nav-events">
-                  Events
+                <span class="nav-link">Events</span>
               </div>
               
             </div>
           </div>
           
-          <div class="four wide column">
+          <div class="four wide column level2">
             <!--Second layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                Lower 1
+                <span class="nav-link">Lower 1</span>
               </div>
               <div class="item">
-                Lower 2
+                <span class="nav-link">Lower 2</span>
               </div>
               <div class="item">
-                Lower 3
+                <span class="nav-link">Lower 3</span>
               </div>
             </div>
           </div>
           
-          <div class="four wide column">
+          <div class="four wide column level3">
             <!--Third layer of stuff-->
             <div class="ui selection list">
               <div class="item">
@@ -92,7 +82,7 @@
             </div>
           </div>
           
-          <div class="four wide column">
+          <div class="four wide column level4">
             <!--Fourth layer of stuff-->
             <div class="ui selection list">
               <div class="item">
@@ -106,6 +96,15 @@
               </div>
             </div>
           </div>
+          
+            <div class="sixteen wide column right aligned">
+              <a href="https://www.facebook.com/StudioByOseasVillatoro">
+                <i class="white large facebook icon"></i>
+              </a>
+              <a href="https://instagram.com/designeroseasv">
+                <i class="white large instagram icon"></i>
+              </a>
+            </div>          
         </div>
         
       </div>
@@ -117,19 +116,24 @@
 
 <script>
   $("#expandedNav").hide();
+  
+  $(".level2").hide();
+  $(".level3").hide();
+  $(".level4").hide();
     //navLogo.src = '../assets/img/logo_words_invert';
     
   $("#ddChevron").mouseenter(function(){
     $("#expandedNav").slideDown();
-     $("#mainNavEntries").css("background-color", "white");
+    $("#mainNavEntries").css("background-color", "black");
     $("#mainNavEntries").css('position', 'absolute');
     $("#mainNavEntries").css('z-index', 9999); 
   });
-
+  
   $(".navbar").mouseleave(function(){
     $("#mainNavEntries").css("background-color", "transparent");
     $("#expandedNav").hide();
   });
+
   
 
 </script>

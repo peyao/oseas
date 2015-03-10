@@ -17,7 +17,6 @@ p {
   .navbar .nav-link {
     color: #fff;
     font-family: 'Poiret One', cursive;
-    font-size: 200%;
     cursor: pointer; }
   .navbar .nav-link:hover {
     color: #fff;
