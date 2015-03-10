@@ -1,6 +1,6 @@
 <div class="events below-navbar noflicker responsive-margins">
   <div class="ui centered grid">
-    <div id="future" class="eight wide left justified center aligned column">
+    <div id="future" class="eight wide left floated center aligned column">
       
       <h1>Coming Events</h1>
       
@@ -27,51 +27,51 @@
       </p>
     </div>
     
-    <div id="past" class="four wide right justified center aligned column">
+    <div id="past" class="six wide right floated center aligned column">
       <h1>Past Events</h1>
       
-      <div class="pastEvent">
+      <div class="pastEvent hvr-back-pulse">
         <h2>Experience Fashion Night</h2>
         <hr />
-        <img ui-sref="event" class="hvr-push" src="assets/img/calendar.jpg" />
+        <center>
+          <img ui-sref="event" src="assets/img/calendar.jpg" />
+        </center>
       </div>
       
-      <div class="pastEvent">
+      <div class="hvr-back-pulse pastEvent">
         <h2>Urban Art Showcase</h2>
         <hr />
-        <img ui-sref="event" class="hvr-push"src="assets/img/bust.jpg" />
+        <center>
+          <img ui-sref="event" src="assets/img/boss.jpg" />
+        </center>
       </div>
       
       
-      <div class="pastEvent">
+      <div class="pastEvent hvr-back-pulse">
         <h2>FWSD14</h2>
         <hr />
-        <img ui-sref="event" class="hvr-push" src="assets/img/runway2.jpg" />
+        <center>
+          <img ui-sref="event" src="assets/img/runway2.jpg" />
+        </center>
       </div>
       
     </div>
     
     <script>
-      
-      
       $("#past").mouseenter(function(){
-        $("#past").removeClass("four wide").addClass("eight wide");
-        $("#future").removeClass("eight wide").addClass("four wide");
-        //$("#past").transition('fade left');
+        $("#past").removeClass("six wide").addClass("ten wide");
+        $("#future").removeClass("ten wide").addClass("six wide");
 
        });
       
 
       $("#future").mouseenter(function(){
-        $("#future").removeClass("four wide").addClass("eight wide");
-        $("#past").removeClass("eight wide").addClass("four wide");
+        $("#future").removeClass("six wide").addClass("ten wide");
+        $("#past").removeClass("ten wide").addClass("six wide");
       });
-      
-      //$(".events").shape();
-      //$(".events").shape('flip up');
     </script>
     
-    <div class="eight wide right justified center aligned column">
+    <div class="ten wide right justified center aligned column">
     
     </div>
   </div>

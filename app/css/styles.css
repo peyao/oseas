@@ -88,8 +88,12 @@ p {
 .events {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding-top: 0% 2% 2% 2%; }
-  .events img {
+  padding: 0% 5% 0% 5%; }
+  .events h2 {
+    width: 100%; }
+  .events #past img {
+    width: 80%; }
+  .events #future img {
     width: 100%; }
   .events .column {
     -webkit-transition: width 0.8s ease, margin 0.8s ease;
