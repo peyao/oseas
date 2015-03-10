@@ -56,13 +56,13 @@
             <!--Second layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                <span class="nav-link">Lower 1</span>
+                <span class="nav-link">Level2</span>
               </div>
               <div class="item">
-                <span class="nav-link">Lower 2</span>
+                 <span class="nav-link">Level2</span>
               </div>
               <div class="item">
-                <span class="nav-link">Lower 3</span>
+                 <span class="nav-link">Level2</span>
             </div>
           </div>
           
@@ -70,13 +70,13 @@
             <!--Third layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                
+                <span class="nav-link">Level3</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level3</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level3</span>
               </div>
             </div>
           </div>
@@ -85,33 +85,21 @@
             <!--Fourth layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
-                
+                <span class="nav-link">Level4</span>
               </div>
               <div class="item">
+                <span class="nav-link">Level4</span>
               </div>
-
-
-                
-          <div align="center">
-          <div class="circular ui icon button"> <a href="https://www.facebook.com/StudioByOseasVillatoro">
-            <i class="facebook icon"></i></a>
-          </div>
-
-          <div class="circular ui icon button"><a href="https://instagram.com/designeroseasv">
-            <i class="instagram icon"></i></a>
-          </div>
-
-          
-        </div>
+              
               </div>
             </div>
           </div>
@@ -143,12 +131,17 @@
     
   $("#ddChevron").mouseenter(function(){
     $("#expandedNav").slideDown();
-    $("#mainNavEntries").css("background-color", "black");
+    $("#expandedNav").css("background-color", "black");
     $("#mainNavEntries").css('position', 'absolute');
     $("#mainNavEntries").css('z-index', 9999); 
   });
   
   $("#nav-cat").mouseenter(function(){
+    $(".level2").slideDown().mouseenter(function(){
+      $(".level3").slideDown().mouseenter(function(){
+        $(".level4").slideDown();
+      });
+    });
     
   });
   
