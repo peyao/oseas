@@ -9,20 +9,47 @@ angular.module('oseas.controllers', [])
 
 .controller('HomeCtrl', function($scope, $rootScope, $state, $location) {
 
-  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
-
   $scope.eventRedirect = function() {
     console.log('Going to event');
     $state.go('event');
   };
 })
 
-.controller('CatalogueCtrl', function($scope, $rootScope, $location) {
-
-  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
+.controller('CatalogueCtrl', function($scope, $rootScope, $location, ContentService) {
+  ContentService.getAllProducts(function(products) {
+    $scope.products = products;
+    console.log('products[0].mainImage:' + products[0].mainImage);
+  });
 })
 
-.controller('ProductCtrl', function($scope, $rootScope, $location) {
+.controller('ProductCtrl', function($scope, $rootScope, $location, $stateParams, ContentService, ngDialog) {
+
+  $('.ui.dropdown')
+    .dropdown();
+
+  $scope.lightbox = function (image) {
+
+    console.log('image: ' + image);
+    ngDialog.open({
+      template: '<img class="ui fluid image" ng-src="' + image + '">',
+      plain: true
+    });
+
+    /*
+    $scope.secondaryIndex = $scope.product.secondaryImages.indexOf(image);
+    console.log('secondaryIndex: ' + $scope.secondaryIndex);
+    console.log('indexUrl: ' + $scope.product.secondaryImages[$scope.secondaryIndex]);
+    if ($scope.secondaryIndex >= 0)
+      $('#secondary-modal').modal('show');
+    else
+      $('#main-modal').modal('show');
+    */
+  };
+
+  ContentService.getProduct($stateParams.productName, function(product) {
+    $scope.product = product;
+
+  });
 })
 
 .controller('OrderFormCtrl', function($scope, $rootScope, $location) {
@@ -31,12 +58,9 @@ angular.module('oseas.controllers', [])
 
 .controller('AboutCtrl', function($scope, $rootScope, $location) {
 
-  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 })
 
 .controller('ContactCtrl', function($scope, $rootScope, $location) {
-
-  setActiveLink($location.path(), $rootScope.elCat, $rootScope.elAbout, $rootScope.elContact);
 
 })
 
@@ -51,14 +75,20 @@ angular.module('oseas.controllers', [])
   // TODO REMOVE THIS
   $scope.loggedIn = true; // REMOVE THIS!
 
-  $scope.uploadedFiles = [];
+  $scope.uploadedSecondary = [];
+  $scope.sizes = {
+    small: true,
+    medium: true,
+    large: true
+  };
+  $scope.product = {};
 
   $('#login-form')
     .dimmer({
       closable: false
     });
 
-  $('select.dropdown')
+  $('.dropdown')
     .dropdown();
 
   $('.ui.checkbox')
@@ -71,12 +101,34 @@ angular.module('oseas.controllers', [])
     $('#imageFile').click();
   };
 
-  $scope.$watch('files', function () {
-    PublishContentService.publishProductImage($scope.files, function(uploadedFilename) {
-      $scope.uploadedFiles.push(uploadedFilename);
-    });
+  $scope.setProductCategory = function (category) {
+    $scope.product.category = category;
+  };
 
+  $scope.setProductModelSize = function (modelSize) {
+    $scope.product.model.size = modelSize;
+  };
+
+  $scope.toggleProductSizeAvailable = function (size) {
+    if (size === 'small') $scope.sizes.small = !$scope.sizes.small; 
+    if (size === 'medium') $scope.sizes.medium = !$scope.sizes.medium; 
+    if (size === 'large') $scope.sizes.large = !$scope.sizes.large; 
+  };
+
+  // mainFile
+  $scope.$watch('mainFile', function () {
+    PublishContentService.publishProductImage($scope.mainFile, function(uploadedFile) {
+      console.log('uploadedFile.name: ' + uploadedFile.name);
+      $scope.uploadedMain = uploadedFile;
+    });
   });
+
+  $scope.$watch('secondaryFiles', function () {
+    PublishContentService.publishProductImage($scope.secondaryFiles, function(uploadedFile) {
+      $scope.uploadedSecondary.push(uploadedFile);
+    });
+  });
+
 
   UserSessionService.checkLoggedIn(function(user) {
 
@@ -103,7 +155,7 @@ angular.module('oseas.controllers', [])
       }
       else {
         console.log("Login failed");
-        $('.basic.modal').modal('show');
+        $('#login-unsuccessful-modal').modal('show');
       }
     });
   };
@@ -120,17 +172,25 @@ angular.module('oseas.controllers', [])
     });
   };
 
+  $scope.catalogueIsValid = function() {
+    
+  };
+
   $scope.publishCatalogue = function (product) {
-
-    console.log('typeof product.image:' + (typeof product.image));
-
-    // First upload image
-    PublishContentService.publishProductImage(product.image, function(image) {
-      if (image) {
-        console.log('image uploaded successfully!: ' + image.url);
-
-      }
-    });
+    console.log('Publishing Catalogue...');
+    PublishContentService.publishProduct(product.name, $scope.product.category, product.price, 
+      product.description, product.composition, product.care, product.model.height, 
+      product.model.size, $scope.sizes.small, $scope.sizes.medium, $scope.sizes.large,
+      $scope.uploadedMain, $scope.uploadedSecondary, function(status) {
+        if (status) {
+          console.log('Publish successful.');
+          $('#publish-success-modal').modal('show');
+        }
+        else {
+          console.log('Publish failed');
+          $('#publish-fail-modal').modal('show');
+        }
+      });
   };
 
   $scope.publishEvent = function (event) {
@@ -139,85 +199,3 @@ angular.module('oseas.controllers', [])
 
 })
 
-.directive('fileread', [function() {
-  return {
-    scope: {
-      fileread: "="
-    },
-    link: function (scope, element, attributes) {
-      element.bind("change", function (changeEvent) {
-        var reader = new FileReader();
-        reader.onload = function (loadEvent) {
-          scope.$apply(function() {
-            scope.fileread = loadEvent.target.result;
-          });
-        };
-        reader.readAsDataURL(changeEvent.target.files[0]);
-      });
-    }
-  };
-}])
-
-.directive('fade', function() {
-	  return {
-			link: function(scope, element, attrs) {
-
-	      $(element).click(function(){
-          $(element).transition('fade');
-        });
-
-	    }
-	};
-})
-
-.directive('showSidebar', function() {
-	return {
-    link: function(scope, element, attrs) {
-
-      $(element).click(function() {
-        $('.sidebar').sidebar('toggle');
-      });
-
-    }
-  };
-});
-
-// Helper functions
-/*
-var removeBackground = function($rootScope) {
-  $rootScope.body.removeClass('background-image');
-  $rootScope.body.addClass('background-black');
-};
-
-var restoreBackground = function($rootScope) {
-  $rootScope.body.addClass('background-image');
-}
-
-
-*/
-
-var setActiveLink = function(currentPage, elCat, elAbout, elContact) {
-  console.log(currentPage);
-  switch(currentPage) {
-    case "/home":
-      $(elCat).removeClass('hvr-underline-from-center:active');
-      $(elAbout).removeClass('hvr-underline-from-center:active');
-      $(elContact).removeClass('hvr-underline-from-center:active');
-      break;
-    case "/catalogue":
-      $(elCat).addClass('red');
-      $(elAbout).removeClass('hvr-underline-from-center:active');
-      $(elContact).removeClass('hvr-underline-from-center:active');
-      break;
-    case "/about":
-      $(elCat).removeClass('hvr-underline-from-center:active');
-      $(elAbout).addClass('hvr-underline-from-center:active');
-      $(elContact).removeClass('hvr-underline-from-center:active');
-      break;
-    case "/catalogue":
-      $(elCat).removeClass('hvr-underline-from-center:active');
-      $(elAbout).removeClass('hvr-underline-from-center:active');
-      $(elContact).addClass('hvr-underline-from-center:active');
-      break;
-  }  
-}

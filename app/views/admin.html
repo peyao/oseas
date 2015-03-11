@@ -43,7 +43,7 @@
 
   </form>
 
-  <div class="ui basic modal">
+  <div class="ui basic modal" id="login-unsuccessful-modal">
     <i class="close icon"></i>
     <div class="header">
       Login Unsuccessful
@@ -80,25 +80,30 @@
         <h3 class="ui dividing inverted header">
           Add a Product to the Catalogue
         </h3>
-        <form class="ui form">
+        <form class="ui form" id="catalogue-form" name="catalogueForm" ng-submit="publishCatalogue(product)">
 
           <div class="two fields">
             <div class="required field">
               <label>Product Name</label>  
-              <input type="text" placeholder="Blue Dress" ng-model="product.name">
+              <input type="text" placeholder="Only use alphanumeric. No symbols allowed; issues will occur." name="productName" ng-model="product.name" required>
             </div>
             <div class="field">
               <div class="two fields">
                 <div class="required field">
                   <label>Category</label>
-                  <select class="ui dropdown" ng-model="product.category">
-                    <option value="">Dress? Top? Bottom?</option>
-                    <option value="0">Dress</option>
-                    <option value="1">Top</option>
-                    <option value="2">Bottom</option>
-                  </select>
+                  <div class="ui selection dropdown">
+                    <input type="hidden" name="productCategory">
+                    <div class="default text">Dress? Top? Bottom?</div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                      <div class="item" ng-click="setProductCategory('dress')">Dress</div>
+                      <div class="item" ng-click="setProductCategory('top')">Top</div>
+                      <div class="item" ng-click="setProductCategory('bottom')">Bottom</div>
+                    </div>
+                  </div>
+
                 </div>
-                <div class="required field">
+                <div class="field">
                   <label>Price</label>
                   <input type="text" placeholder="$200.00" ng-model="product.price">
                 </div>
@@ -108,17 +113,17 @@
 
           <div class="required field">
             <label>Description</label>
-            <textarea ng-model="product.description"></textarea>
+            <textarea name="productDescription" ng-model="product.description"></textarea>
           </div>
 
           <div class="two fields">
             <div class="required field">
               <label>Composition</label>
-              <input type="text" placeholder="Silk 90%, Cotton 5%, Other material 5%" ng-model="product.composition">
+              <input type="text" placeholder="Silk 90%, Cotton 5%, Other material 5%" ng-model="product.composition" name="productComposition" required>
             </div>
             <div class="required field">
               <label>Care</label>
-              <input type="text" placeholder="Dry clean only, Other directions." ng-model="product.care">
+              <input type="text" placeholder="Dry clean only, Other directions." ng-model="product.care" name="productCare" required>
             </div>
           </div>
 
@@ -129,31 +134,43 @@
             </div>
             <div class="field">
               <label>Model Size</label>
+              <!--
               <select class="ui dropdown" ng-model="product.model.size">
-                <option value="">Size the model is wearing...</option>
+                <option value="">What size is your model wearing?</option>
                 <option value="0">Small</option>
                 <option value="1">Medium</option>
                 <option value="2">Large</option>
               </select>
+              -->
+              <div class="ui selection dropdown">
+                <input type="hidden" name="productModelSize">
+                <div class="default text">What size is your model wearing?</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item" ng-click="setProductModelSize('Small')">Small</div>
+                  <div class="item" ng-click="setProductModelSize('Medium')">Medium</div>
+                  <div class="item" ng-click="setProductModelSize('Large')">Large</div>
+                </div>
+              </div>
             </div>
-            <div class="required field">
+            <div class="field">
               <label>Sizes Available</label>
               <div class="three fields">
                 <div class="field">
                   <div class="ui checkbox">
-                    <input type="checkbox" name="size-available-small" ng-model="product.size.small">
+                    <input type="checkbox" name="sizeAvailableSmall" ng-model="sizes.small" ng-click="toggleProductSizeAvailable(sizes.small)">
                     <label>Small</label>
                   </div>
                 </div>
                 <div class="field">
-                  <div class="ui checkbox">
-                    <input type="checkbox" name="size-available-medium" ng-model="product.size.medium">
+                  <div class="ui checkbox" ng-click="toggleProductSizeAvailable('medium')">
+                    <input type="checkbox" name="sizeAvailableMedium" ng-model="sizes.medium">
                     <label>Medium</label>
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui checkbox">
-                    <input type="checkbox" name="size-available-large" ng-model="product.size.large">
+                    <input type="checkbox" name="sizeAvailableLarge" ng-model="sizes.large" ng-click="toggleProductSizeAvailable(sizes.large)">
                     <label>Large</label>
                   </div>
                 </div>
@@ -161,26 +178,24 @@
             </div>
           </div>
 
-          <!--
-          <div class="image-upload-button">
-            <input type="file" id="imageFile" name="imageFile" fileread="product.image">
-          </div>
-          -->
-
           <div class="ui grid">
             <div class="row">
-              <div class="seven wide column">
-                <!--
-                <div class="fluid ui inverted red button" ng-click="chooseFile()">Select Image</div> 
-                -->
-                <div ng-file-drop ng-model="files" class="drop-box"
+              <div class="five wide column">
+                <div ng-file-drop ng-model="mainFile" class="drop-box"
                     drag-over-class="dragover" ng-multiple="true" allow-dir="true"
                     accept=".jpg,.png">
-                  Drop .png or .jpg files here.
+                  Drop <b>one main</b> .png or .jpg image here.
                 </div>
               </div>
-              <div class="nine wide column">
-                <div class="fluid ui inverted yellow button" ng-click="publishCatalogue(product)">Publish</div> 
+              <div class="eight wide column">
+                <div ng-file-drop ng-model="secondaryFiles" class="drop-box"
+                    drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+                    accept=".jpg,.png">
+                  Drop <b>multiple secondary</b> .png or .jpg images here.
+                </div>
+              </div>
+              <div class="three wide column">
+                <button class="fluid ui inverted yellow button" type="submit">Publish</button> 
               </div>
             </div>
           </div>
@@ -197,7 +212,7 @@
           Add an Event
         </h3>
 
-        <form class="ui form">
+        <form class="ui form" id="event-form" name="eventForm" ng-submit="publishEvent(event)">
           <div class="two fields">
             <div class="required field">
               <label>Event Name</label>
@@ -220,7 +235,7 @@
                 <div class="fluid ui inverted red button" ng-model="event.image">Select Image</div> 
               </div>
               <div class="nine wide column">
-                <div class="fluid ui inverted yellow button">Publish</div> 
+                <button class="fluid ui inverted yellow button" type="submit">Publish</button> 
               </div>
             </div>
           </div>
@@ -231,15 +246,74 @@
 
   </div>
 
-  <div class="ui fluid form inverted segment" ng-show="uploadedFiles.length">
-    <h3 class="ui dividing inverted header">
-      Uploaded Images
-    </h3>
+  <div class="ui fluid form inverted segment" ng-show="uploadedSecondary.length || uploadedMain">
+
+    <h5 class="ui dividing inverted header">
+      Uploaded Main Image
+    </h5>
     <div class="ui inverted list">
-      <div class="item" ng-repeat="file in uploadedFiles">
+      <div class="item">
         <i class="right triangle icon"></i>
         <div class="content">
-          <div class="header">{{ file }}</div>
+          <div class="header">{{ uploadedMain.url }}</div>
+          <img class="ui medium bordered image" ng-src="{{ uploadedMain.url }}">
+        </div>
+      </div>
+    </div>
+
+    <h5 class="ui dividing inverted header">
+      Uploaded Secondary Images
+    </h5>
+    <div class="ui inverted list">
+      <div class="item" ng-repeat="file in uploadedSecondary">
+        <i class="right triangle icon"></i>
+        <div class="content">
+          <div class="header">{{ file.url }}</div>
+          <img class="ui medium bordered image" ng-src="{{ file.url }}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui basic modal" id="publish-success-modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Publish Success
+    </div>
+    <div class="content">
+      <div class="image">
+        <i class="check icon"></i>
+      </div>
+      <div class="description">
+        <p>Your content has been published successfully.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="fluid ui inverted buttons">
+        <div class="ui green basic inverted button">
+          OK
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui basic modal" id="publish-fail-modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Publish Failed
+    </div>
+    <div class="content">
+      <div class="image">
+        <i class="frown icon"></i>
+      </div>
+      <div class="description">
+        <p>Your content could not be published. Please try again later or contact the creators of the site.</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="fluid ui inverted buttons">
+        <div class="ui green basic inverted button">
+          OK
         </div>
       </div>
     </div>

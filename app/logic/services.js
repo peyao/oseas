@@ -39,26 +39,75 @@ servicesModule.factory('UserSessionService', function($http) {
   };
 });
 
+servicesModule.factory('ContentService', function($http) {
+
+  return {
+
+    getProduct: function(productName, callback) {
+      $http.get('/api/product/' + productName)
+        .success(function(data) {
+          callback(data);
+        })
+        .error(function(status) {
+          callback(null);
+        }); 
+    },
+
+    getAllProducts: function(callback) {
+      $http.get('/api/product')
+        .success(function(data) {
+          callback(data);
+        })
+        .error(function(status) {
+          callback(null);
+        }); 
+    },
+
+    getEvent: function(eventName, callback) {
+
+    }
+  };
+});
+
 servicesModule.factory('PublishContentService', function($http, $upload) {
 
   return {
 
     publishProduct: function(name, category, price, description, composition, 
-        care, modelHeight, modelSize, sizeSmall, sizeMedium, sizeLarge, callback) {
+        care, modelHeight, modelSize, sizeSmall, sizeMedium, sizeLarge, 
+        mainImage, secondaryImages, callback) {
 
-      $http.post('/api/publish/product', {
-        name        : name,
-        category    : category,
-        price       : price,
-        description : description,
-        composition : composition,
-        care        : care,
-        modelHeight : modelHeight,
-        modelSize   : modelSize,
-        sizeSmall   : sizeSmall,
-        sizeMedium  : sizeMedium,
-        sizeLarge   : sizeLarge
-      }).success(function(status) {
+      console.log("mainImage.url : " + mainImage.url);
+      console.log("secondaryImages[0].url : " + secondaryImages[0].url);
+
+      var secondaryImagesURL = [];
+      for (var i = 0; i < secondaryImages.length; i++) {
+        secondaryImagesURL.push(secondaryImages[i].url);
+      }
+
+      var postObject = {};
+      postObject.name = name;
+      postObject.category = category;
+      postObject.price = price;
+      postObject.description = description;
+      postObject.composition = composition;
+      postObject.care = care;
+      postObject.modelHeight = modelHeight;
+      postObject.modelSize = modelSize;
+      postObject.sizeSmall = sizeSmall;
+      postObject.sizeMedium = sizeMedium;
+      postObject.sizeLarge = sizeLarge;
+      postObject.mainImage = mainImage.url;
+      postObject.secondaryImages = secondaryImagesURL;
+
+
+      $http.post('/api/publish/product', postObject,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      ).success(function(status) {
         callback(true);
       }).error(function(status) {
         callback(false);
@@ -76,7 +125,7 @@ servicesModule.factory('PublishContentService', function($http, $upload) {
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
           }).success(function (data, status, headers, config) {
-            callback(config.file.name);
+            callback(data);
             //console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
           });
         }

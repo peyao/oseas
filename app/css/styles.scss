@@ -213,6 +213,10 @@ p {
   background: rgba(0, 0, 0, .6);
   color: #fff;
   padding-top: 0%;
+
+  .ui.inverted.segment {
+    background: rgba(0, 0, 0, .5) !important;
+  }
 }
 
 // admin.html

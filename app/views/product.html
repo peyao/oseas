@@ -1,55 +1,38 @@
-<div class="about below-navbar noflicker noselect no-i-bar responsive-margins">
-  <div class="ui two column padded page grid" align="center">
-    <!--Product Picture-->
-    <div class="column" align="left">
-      <div class="ui breadcrumb">
-        <i class="left white chevron icon divider"></i>
-        <a class="section" ui-sref="catalogue"> Back to Catalogue</a>
-      </div>
-      <br><br><br>
-      
-      <div align="center">
-        <img id="my_main" src="assets/img/xman.jpg" alt="about" class="ui medium image">
-        <br><br>
+<div class="product below-navbar fill-rest-of-page noflicker noselect no-i-bar responsive-margins">
 
-        <img id="my_image" class="ui top aligned tiny image" src="assets/img/front.jpg">
-        <img id="my_image2" class="ui middle aligned tiny image" src="assets/img/back.jpg">
-        <img id="my_image3" class="ui bottom aligned tiny image" src="assets/img/oseas_profile.jpg">
-        <img id="my_image4" class="ui bottom aligned tiny image" src="assets/img/xman.jpg">
-      </div>
+  <div class="ui fluid inverted segment">
+    <div class="ui two column padded page doubling stackable grid" align="center">
+      <!--Product Picture-->
+      <div class="column" align="left">
+        <div class="ui breadcrumb">
+          <i class="left white chevron icon divider"></i>
+          <a class="section" ui-sref="catalogue"> Back to Catalogue</a>
+        </div>
+        <br><br><br>
+
+        <div align="center">
+          <img class="ui fluid image main-image" ng-src="{{ product.mainImage }}" alt="about" class="ui medium image" ng-click="lightbox(product.mainImage)">
+          <br><br>
+
+          <div class="ui basic modal" id="main-modal">
+            <img class="ui fluid image" ng-src="{{ product.mainImage }}">
+          </div>
+
+          <div class="ui three column grid">
+            <img class="ui column image secondary-image" ng-src="{{ secondaryImage }}" ng-repeat="secondaryImage in product.secondaryImages" ng-click="lightbox(secondaryImage)">
+          </div>
+          <!--
+          <div class="ui three column grid">
+            <img class="ui column image secondary-image" ng-src="{{ secondaryImage }}" ng-repeat="secondaryImage in product.secondaryImages" ng-click="lightbox(secondaryImage)">
+          </div>
+
+          <div class="ui basic modal" id="secondary-modal">
+            <img class="ui fluid image" ng-src="{{ product.secondaryImages[secondaryIndex] || product.secondaryImages[0] }}">
+          </div>
+          -->
+
+        </div>
     </div> 
-
-    <script>
-      $('#my_image').on({
-        'click':function(){
-
-          $('#my_main').attr('src','assets/img/front.jpg');
-        }
-
-      });
-
-      $('#my_image2').on({
-        'click':function(){
-
-          $('#my_main').attr('src','assets/img/back.jpg');
-        }
-      });
-
-      $('#my_image3').on({
-        'click':function(){
-
-          $('#my_main').attr('src','assets/img/oseas_profile.jpg');
-        }
-      });
-
-      $('#my_image4').on({
-        'click':function(){
-
-          $('#my_main').attr('src','assets/img/xman.jpg');
-        }
-      });
-
-    </script>
 
     <!--Right Column-->
     <div class="column description">
@@ -66,39 +49,10 @@
       </div>
       <br><br>
 
-
-      <font size="32">Look #3</font>
+      <font size="32">{{ product.name }}</font>
       <div class="ui divider"></div>
 
-    <!--    
-        <div class="ui dropdown">
-          <input name="color" type="hidden">
-          <div class="default text">Color</div>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item" data-value="1">Royal Blue</div>
-            <div class="item" data-value="0">Prism White</div>
-          </div>
-        </div>
-      -->
-      <div class="ui dropdown">
-        <div class="text">Color</div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <div class="item">Royal Blue</div>
-          <div class="item">Prism White</div>         
-        </div>
-      </div>
-
-      <script>
-        $('.ui.dropdown')
-        .dropdown()
-        ;
-      </script>
-
-      <br><br>
-
-      <div class="ui dropdown">
+      <div class="ui selection dropdown">
         <div class="text">Quantity</div>
         <i class="dropdown icon"></i>
         <div class="menu">
@@ -109,33 +63,25 @@
       </div>
 
       <br><br>
-<!--
-        <div class="ui vertical animated button">
-          <div class="hidden content" ><a ui-sref="orderform">Buy</a></div>
-          <div class="visible content">
-            <i class="shop icon"></i>
-          </div>
+
+        <div class="ui inverted button" ui-sref="orderform">Buy Now</div>
+
+        <div class="ui horizontal divider">
+          <p color="white">Info</p>
         </div>
-      -->
 
-      <div class="ui inverted button" ui-sref="orderform">Buy Now</div>
+        <p align="center">{{ product.description }}</p>
 
-      <div class="ui horizontal divider">
-        <p color="white">Info</p>
-      </div>
+        <div class="ui divider"></div>
+        Other pieces of this look:
+        <br>
+        <br>
 
-      <p align="center">This section will be a description of the clothing in detail. It may contain what type of material is being used and for what occasion this item would be worn to. For example: This blue satin dress made with material imported from South Korea, the color is bold and is sure to make a presence at any red carpet event!</p>
+        <img class="ui top aligned tiny image" src="assets/img/steam.jpg">
+        <img class="ui middle aligned tiny image" src="assets/img/banana.jpg">
+        <img class="ui bottom aligned tiny image" src="assets/img/bloo.jpg">
 
-      <div class="ui divider"></div>
-      <br><br><br><br><br><br>
-      Other pieces of this look:
-      <br>
-      <br>
-
-      <img class="ui top aligned tiny image" src="assets/img/steam.jpg">
-      <img class="ui middle aligned tiny image" src="assets/img/banana.jpg">
-      <img class="ui bottom aligned tiny image" src="assets/img/bloo.jpg">
-
-    </div> 
+      </div> 
+    </div>
   </div>
 </div>

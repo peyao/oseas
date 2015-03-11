@@ -1,7 +1,8 @@
-angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'angular-loading-bar', 'ngAnimate', 'angularFileUpload'])
+angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'angular-loading-bar', 'ngAnimate', 'angularFileUpload', 'ngDialog'])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
 
+  /*
   $httpProvider.defaults.transformRequest = function (data) {
     if ( data === undefined ) {
       return data;
@@ -9,6 +10,7 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
     return $.param(data);
   };
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+  */
 
   $stateProvider
 
@@ -46,7 +48,7 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
     })
     .state('product', {
       parent: 'nav',
-      url: '/product',
+      url: '/product/:productName',
       templateUrl: 'views/product.html',
       controller: 'ProductCtrl'
     })

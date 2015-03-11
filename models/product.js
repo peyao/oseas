@@ -3,13 +3,19 @@ var Schema = mongoose.Schema;
 
 var productSchema = new Schema({
 
-	name: 			String,
-	description:	String,
-	difficulty: 	Number,
-	required_items: [{ type: String }],
-	optional_items: [{ type: String }],
-	image: String,
-	author: String
+	name 			: { type: String, required: true },
+	category		: String,
+	price			: String,
+	description 	: { type: String, required: true },
+	composition		: String,
+	care 			: String,
+	modelHeight 	: String,
+	modelSize 		: String,
+	sizeSmall 		: Boolean,
+	sizeMedium 		: Boolean,
+	sizeLarge 		: Boolean,
+	mainImage 		: String,
+	secondaryImages	: [{ type: String }]
 });
 
 module.exports = mongoose.model('Product', productSchema);

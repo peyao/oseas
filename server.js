@@ -11,9 +11,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var passport = require('passport');
-var authentication = require('./routes/authentication.js');
 var cloudinary = require('cloudinary');
 var multer = require('multer');
+var fs = require('fs');
+
+var authentication = require('./routes/authentication.js');
+var publish = require('./routes/publish.js');
+var content = require('./routes/content.js');
 
 cloudinary.config({ 
   cloud_name: 'oseas', 
@@ -23,6 +27,7 @@ cloudinary.config({
 
 // Passport Uses
 app.use(cookieParser());
+app.use(bodyParser.json({ strict: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressSession({ 
 	secret: process.env.SESSION_SECRET || 'metroid prime', 
@@ -43,6 +48,27 @@ app.all('*', function(req, res, next) {
 });
 
 // API Routes
+// GET: Retrieve all products
+app.get('/api/product', function(req, res) {
+  content.getAllProducts(function(products) {
+    if (products)
+      res.send(products);
+    else
+      res.send(500);
+  });
+});
+
+// GET: Retrieve a specific product
+app.get('/api/product/:productName', function(req, res) {
+  content.getProduct(req.params.productName, function(product) {
+    if (product) {
+      res.send(product);
+    }
+    else {
+      res.send(400);
+    }
+  });
+});
 
 // GET: Check logged in
 app.get('/api/user', function(req, res) {
@@ -67,9 +93,12 @@ app.post('/api/user/logout', function(req, res) {
 // POST: Publish Product
 app.post('/api/publish/product', function(req, res) {
 
-  publish.publishEvent(req.body.name, req.body.category, req.body.price, req.body.description, 
+  console.log(req.body);
+
+  publish.publishProduct(req.body.name, req.body.category, req.body.price, req.body.description, 
       req.body.composition, req.body.care, req.body.modelHeight, req.body.modelSize,
-      req.body.sizeSmall, req.body.sizeMedium, req.body.sizeLarge, req.body.image, function(status) {
+      req.body.sizeSmall, req.body.sizeMedium, req.body.sizeLarge,
+      req.body.mainImage, req.body.secondaryImages, function(status) {
 
     if (status) {
       res.send(200);
@@ -83,22 +112,20 @@ app.post('/api/publish/product', function(req, res) {
 // POST: Product Image
 app.post('/api/publish/product/image', function(req, res) {
 
-  console.log('Content-Type ' + req.headers['Content-Type']);
-  console.log(JSON.stringify(req.files));
-
-  res.send(200);
-
-  /*
-  cloudinary.uploader.upload(req.files.image, function(result) {
+  //res.send(req.files.file);
+  cloudinary.uploader.upload(req.files.file.path, function(result) {
     console.log('Image upload result: ' + result.url);
-    if (result) {
-      res.send(result);
-    }
-    else {
-      res.send(500);
-    }
+    fs.unlink(req.files.file.path, function(err) {
+      if (err) throw err;
+
+      if (result) {
+        res.send(result);
+      }
+      else {
+        res.send(500);
+      }
+    });
   });
-*/
 });
 
 // POST: Publish Event
