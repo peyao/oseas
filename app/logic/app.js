@@ -42,7 +42,7 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
     
     .state('catalogue', {
       parent: 'nav',
-      url: '/catalogue',
+      url: '/catalogue/:sex?category',
       templateUrl: 'views/catalogue.html',
       controller: 'CatalogueCtrl'
     })

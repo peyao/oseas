@@ -105,7 +105,7 @@
                 </div>
                 <div class="field">
                   <label>Price</label>
-                  <input type="text" placeholder="200.00" ng-model="product.price">
+                  <input type="text" placeholder="200.00" ng-model="product.price" required>
                 </div>
               </div>
             </div>
@@ -130,18 +130,10 @@
           <div class="three fields">
             <div class="field">
               <label>Model Height</label>
-              <input type="text" placeholder="170cm" ng-model="product.model.height">
+              <input type="text" placeholder="170cm" ng-model="product.model.height" required>
             </div>
             <div class="field">
               <label>Model Size</label>
-              <!--
-              <select class="ui dropdown" ng-model="product.model.size">
-                <option value="">What size is your model wearing?</option>
-                <option value="0">Small</option>
-                <option value="1">Medium</option>
-                <option value="2">Large</option>
-              </select>
-              -->
               <div class="ui selection dropdown">
                 <input type="hidden" name="productModelSize">
                 <div class="default text">What size is your model wearing?</div>
