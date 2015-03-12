@@ -78,10 +78,17 @@ a {
   padding-bottom: 15px;
   padding-top: 15px;
   
+  .signature{
+    color: dimgray;
+    opacity: 0.2;
+    font-size: .65em;
+    vertical-align:text-bottom;
+  }
+  
   .nav-link {
     color: #fff; // white
+    //font-family: 'Poiret One', cursive;
     cursor: pointer;
-    font-family: 'Poiret One', cursive;
     //font-size: 200%;
   }
 

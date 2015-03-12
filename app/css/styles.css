@@ -27,10 +27,14 @@ a {
   left: 0;
   padding-bottom: 15px;
   padding-top: 15px; }
+  .navbar .signature {
+    color: dimgray;
+    opacity: 0.2;
+    font-size: .65em;
+    vertical-align: text-bottom; }
   .navbar .nav-link {
     color: #fff;
-    cursor: pointer;
-    font-family: 'Poiret One', cursive; }
+    cursor: pointer; }
   .navbar .nav-link:hover {
     color: #fff;
     font-weight: bold; }
