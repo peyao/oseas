@@ -24,9 +24,10 @@ p {
   left: 0;
   padding-bottom: 15px;
   padding-top: 15px; }
+  .navbar .signature {
+    color: dimgrey; }
   .navbar .nav-link {
     color: #fff;
-    font-family: 'Poiret One', cursive;
     cursor: pointer; }
   .navbar .nav-link:hover {
     color: #fff;

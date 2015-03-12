@@ -74,9 +74,13 @@ p {
   padding-bottom: 15px;
   padding-top: 15px;
   
+  .signature{
+   color: dimgrey; 
+  }
+  
   .nav-link {
     color: #fff; // white
-    font-family: 'Poiret One', cursive;
+    //font-family: 'Poiret One', cursive;
     //font-size: 200%;
     cursor: pointer;
   }
