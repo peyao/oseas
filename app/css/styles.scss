@@ -147,11 +147,26 @@ a {
 .catalogue {
 
   background: rgba(255, 255, 255, .5);
-  padding-top: 0%;
+  padding: 1%;
 
   h1 {
     color: #fff;
-    font-family: 'Poiret One', cursive;
+    //font-family: 'Poiret One', cursive;
+  }
+  
+  //individual products
+  .ui.grid > .column.cat-product{
+    padding:.5%;
+    margin:0;
+    border:0; 
+  }  
+  
+  .hoverText{
+    background-color: black;
+    width:100%;
+    opacity:.4;
+    position:absolute;
+    height:20em;
   }
 }
 
@@ -221,6 +236,11 @@ a {
   background: rgba(0, 0, 0, .6);
   color: #fff;
   padding-top: 0%;
+  
+  iframe {
+    display:block;
+    width:100%;
+  }
 }
 
 // product.html

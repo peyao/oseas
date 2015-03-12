@@ -67,10 +67,19 @@ a {
 
 .catalogue {
   background: rgba(255, 255, 255, 0.5);
-  padding-top: 0%; }
+  padding: 1%; }
   .catalogue h1 {
-    color: #fff;
-    font-family: 'Poiret One', cursive; }
+    color: #fff; }
+  .catalogue .ui.grid > .column.cat-product {
+    padding: .5%;
+    margin: 0;
+    border: 0; }
+  .catalogue .hoverText {
+    background-color: black;
+    width: 100%;
+    opacity: .4;
+    position: absolute;
+    height: 20em; }
 
 .orderform {
   background: rgba(0, 0, 0, 0.6);
@@ -111,6 +120,9 @@ a {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   padding-top: 0%; }
+  .event iframe {
+    display: block;
+    width: 100%; }
 
 .product {
   background: rgba(0, 0, 0, 0.6);

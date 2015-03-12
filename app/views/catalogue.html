@@ -1,14 +1,15 @@
 <div class="catalogue below-navbar noflicker responsive-margins">
-  <h1 align="center">Catalogue</h1>
+  <!--This is ugly <h1 align="center">Catalogue</h1>-->
   <!-- Products -->
   <div class="ui padded doubling stackable grid">
-
     <div class="four wide column cat-product hvr-fade" ng-repeat="product in products">
       <a ui-sref="product({ productName: product.name })">
         <img ng-src="{{ product.mainImage }}" alt="" class="ui fluid image">
       </a>
     </div>
-
   </div>
 </div>
+<script>
+  
+</script>
 
