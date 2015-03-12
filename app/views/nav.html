@@ -52,38 +52,46 @@
             </div>
           </div>
           
-          <div class="four wide column level2">
+          <div class="four wide column level2 ">
             <!--Second layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                <span class="nav-link">Level2</span>
+                <span class="nav-link level2 men">Men</span>
               </div>
               <div class="item">
-                 <span class="nav-link">Level2</span>
-              </div>
-              <div class="item">
-                 <span class="nav-link">Level2</span>
+                 <span class="nav-link level2 women">Women</span>
               </div>
             </div>
           </div>
           
-          <div class="four wide column level3">
+          <div class="four wide column level3 women">
             <!--Third layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                <span class="nav-link">Level3</span>
+                <span class="nav-link">Tops</span>
               </div>
               <div class="item">
-                <span class="nav-link">Level3</span>
+                <span class="nav-link">Bottoms</span>
               </div>
               <div class="item">
-                <span class="nav-link">Level3</span>
+                <span class="nav-link">Dresses</span>
               </div>
             </div>
           </div>
           
+          <div class="four wide column level3 men">
+            <!--Third layer of stuff-->
+            <div class="ui selection list">
+              <div class="item">
+                <span class="nav-link tops">Tops</span>
+              </div>
+              <div class="item">
+                <span class="nav-link bottoms">Bottoms</span>
+              </div>
+            </div>
+          </div>
+          <!--Unused
           <div class="four wide column level4">
-            <!--Fourth layer of stuff-->
             <div class="ui selection list">
               <div class="item">
                 <span class="nav-link">Level4</span>
@@ -99,7 +107,7 @@
               </div>
             </div>
           </div>
-          
+          -->
           <div class="sixteen wide column right aligned">
             <a href="https://www.facebook.com/StudioByOseasVillatoro">
               <i class="white large facebook icon"></i>
@@ -132,11 +140,32 @@
     $("#mainNavEntries").css('z-index', 9999); 
   });
   
+  //Catalogue DD stuff
+  $(".level3").mouseleave(function(){
+      $(".level3").hide();
+    });
+  
   $("#nav-cat").mouseenter(function(){
-    $(".level2").slideDown().mouseenter(function(){
-      $(".level3").slideDown().mouseenter(function(){
-        $(".level4").slideDown();
-      });
+    $(".level2").slideDown();
+    //All Mens DD
+    $(".level2 .men").mouseenter(function(){
+      //Make sure both divs don't show at once
+      $(".level3").hide();
+      $(".level3.men").slideDown();
+    });
+    
+    //All Womens DD
+    $(".level2 .women").mouseenter(function(){
+      //Make sure both divs don't show at once
+      $(".level3").hide();
+      $(".level3.women").slideDown();
+    });
+    
+    //So Lower Levels don't show when selecting other stuff
+    $("#nav-about , #contacts , #events").mouseenter(function(){
+      $(".level2").hide();
+      $(".level3").hide();
+      $(".level4").hide();
     });
     
   });
