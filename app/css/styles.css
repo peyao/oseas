@@ -17,6 +17,9 @@
 p {
   color: #e0e0e0; }
 
+a {
+  color: #fff !important; }
+
 .navbar {
   position: absolute;
   top: 0;
@@ -26,8 +29,8 @@ p {
   padding-top: 15px; }
   .navbar .nav-link {
     color: #fff;
-    font-family: 'Poiret One', cursive;
-    cursor: pointer; }
+    cursor: pointer;
+    font-family: 'Poiret One', cursive; }
   .navbar .nav-link:hover {
     color: #fff;
     font-weight: bold; }
@@ -69,6 +72,8 @@ p {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   padding-top: 0%; }
+  .orderform .ui.inverted.segment {
+    background: rgba(0, 0, 0, 0.5) !important; }
 
 .contact {
   background: rgba(0, 0, 0, 0.6);

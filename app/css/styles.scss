@@ -60,6 +60,10 @@ p {
   color: #e0e0e0;
 }
 
+a {
+  color: #fff !important;
+}
+
 // nav.html
 .navbar {
 
@@ -76,9 +80,9 @@ p {
   
   .nav-link {
     color: #fff; // white
+    cursor: pointer;
     font-family: 'Poiret One', cursive;
     //font-size: 200%;
-    cursor: pointer;
   }
 
   .nav-link:hover {
@@ -148,6 +152,10 @@ p {
   background: rgba(0, 0, 0, .6);
   color: #fff;
   padding-top: 0%;
+
+  .ui.inverted.segment {
+    background: rgba(0, 0, 0, .5) !important;
+  }
 }
 
 // contact.html

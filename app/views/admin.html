@@ -84,7 +84,7 @@
 
           <div class="two fields">
             <div class="required field">
-              <label>Product Name</label>  
+              <label>Product Name (alphanumeric only)</label>  
               <input type="text" placeholder="Only use alphanumeric. No symbols allowed; issues will occur." name="productName" ng-model="product.name" required>
             </div>
             <div class="field">
@@ -105,7 +105,7 @@
                 </div>
                 <div class="field">
                   <label>Price</label>
-                  <input type="text" placeholder="$200.00" ng-model="product.price">
+                  <input type="text" placeholder="200.00" ng-model="product.price">
                 </div>
               </div>
             </div>
@@ -181,14 +181,14 @@
           <div class="ui grid">
             <div class="row">
               <div class="five wide column">
-                <div ng-file-drop ng-model="mainFile" class="drop-box"
+                <div ng-file-drop ng-model="mainProductFile" class="drop-box"
                     drag-over-class="dragover" ng-multiple="true" allow-dir="true"
                     accept=".jpg,.png">
                   Drop <b>one main</b> .png or .jpg image here.
                 </div>
               </div>
               <div class="eight wide column">
-                <div ng-file-drop ng-model="secondaryFiles" class="drop-box"
+                <div ng-file-drop ng-model="secondaryProductFiles" class="drop-box"
                     drag-over-class="dragover" ng-multiple="true" allow-dir="true"
                     accept=".jpg,.png">
                   Drop <b>multiple secondary</b> .png or .jpg images here.
@@ -216,29 +216,41 @@
           <div class="two fields">
             <div class="required field">
               <label>Event Name</label>
-              <input type="text" placeholder="FWSD 2014" ng-model="event.name">
+              <input type="text" placeholder="Only use alphanumeric. No symbols allowed; issues will occur." ng-model="event.name" required>
             </div>
             <div class="required field">
               <label>Date</label>
-              <input type="text" placeholder="Jan 1, 2014" ng-model="event.name">
+              <input type="text" named="eventDate" placeholder="Jan 1, 2014" ng-model="event.date" required>
             </div>
           </div>
 
           <div class="required field">
             <label>Description</label>
-            <textarea ng-model="event.description"></textarea>
+            <textarea name="eventDescription" ng-model="event.description" required></textarea>
           </div>
 
           <div class="ui grid">
             <div class="row">
-              <div class="seven wide column">
-                <div class="fluid ui inverted red button" ng-model="event.image">Select Image</div> 
+              <div class="five wide column">
+                <div ng-file-drop ng-model="mainEventFile" class="drop-box"
+                    drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+                    accept=".jpg,.png">
+                  Drop <b>one main</b> .png or .jpg image here.
+                </div>
               </div>
-              <div class="nine wide column">
+              <div class="eight wide column">
+                <div ng-file-drop ng-model="secondaryEventFiles" class="drop-box"
+                    drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+                    accept=".jpg,.png">
+                  Drop <b>multiple secondary</b> .png or .jpg images here.
+                </div>
+              </div>
+              <div class="three wide column">
                 <button class="fluid ui inverted yellow button" type="submit">Publish</button> 
               </div>
             </div>
           </div>
+
         </form>
       </div>
     </div>
@@ -290,7 +302,7 @@
     </div>
     <div class="actions">
       <div class="fluid ui inverted buttons">
-        <div class="ui green basic inverted button">
+        <div class="ui green basic inverted button" ui-sref="admin" ui-sref-opts="{ reload:true }">
           OK
         </div>
       </div>

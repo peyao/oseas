@@ -1,5 +1,22 @@
 var servicesModule = angular.module('oseas.services', []);
 
+servicesModule.factory('OrderService', function($http) {
+
+  return {
+
+    sendOrder: function(order, callback) {
+      $http.post('/api/order', { order: order })
+        .success(function(status) {
+          callback(true);
+        })
+        .error(function(status) {
+          callback(false);
+        });
+    }
+
+  };
+});
+
 servicesModule.factory('UserSessionService', function($http) {
 
   var user = {};
@@ -46,6 +63,7 @@ servicesModule.factory('ContentService', function($http) {
     getProduct: function(productName, callback) {
       $http.get('/api/product/' + productName)
         .success(function(data) {
+          console.log('Successfully got product');
           callback(data);
         })
         .error(function(status) {

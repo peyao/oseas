@@ -1,101 +1,123 @@
 <div class="orderform fill-rest-of-page below-navbar noflicker responsive-margins">
-  <form class="ui small inverted form">
+  <form class="ui small inverted form fluid inverted segment" ng-submit="submitOrder(order)">
     <div class="ui breadcrumb">
-            <i class="left white chevron icon divider"></i>
-            <a class="section" ui-sref="product"> Back to Product</a>
+      <i class="left white chevron icon divider"></i>
+      <a class="section" ui-sref="product({ productName: order.productName })"> Back to Product</a>
     </div>  
 
-        <div class="ui small error form segment">
-          <div class="ui error message">
-            <div class="header">Terms of Service</div>
-            <ul class="list">
-              <li>All sales are final</li>
-              <li>No returns on final transactions</li>
-              <li>Filling out this form will just be emailed to the designer</li>
-              <li>You will receive a response no later than one week</li>
-            </ul>
-          </div>
-        </div>
+    <div class="ui message">
+      <div class="header">Terms of Service</div>
+      <ul class="list">
+        <li>All sales are final.</li>
+        <li>No returns on final transactions.</li>
+        <li>This form will be emailed to Oseas when submitted.</li>
+        <li>You will receive a response no later than one week.</li>
+      </ul>
+    </div>
 
-   <div class="two fields">
+    <br>
+
+    <div class="two fields">
       <div class="required field">
         <label>Name</label>
 
-          <div class="two fields">
-            <div class="field">
-              <input name="first-name" placeholder="First Name" type="text">
-            </div>
-            <div class="field">
-              <input name="last-name" placeholder="Last Name" type="text">
-            </div>
+        <div class="two fields">
+          <div class="field">
+            <input name="first-name" placeholder="First Name" type="text" ng-model="order.firstName" required>
           </div>
+          <div class="field">
+            <input name="last-name" placeholder="Last Name" type="text" ng-model="order.lastName" required>
+          </div>
+        </div>
 
       </div>
     </div>
- 
-      <div class="inline required fields">
-        <div class="field">
-          <label>Phone</label>
-          <br>
-          <input placeholder="(xxx)" type="text">
-        </div>
-        <div class=" field">
-          <input placeholder="xxx" type="text">
-        </div>
-        <div class="field">
-         <input placeholder="xxxx" type="text">
-        </div>
-      </div>
-<br>
-      <div class="required six wide field">
-        <label>Email</label>
-        <div class="ui icon input" >
-          <input placeholder="Email" type="text">
-          <i class="user icon"></i>
-        </div>
-      </div>
-    
 
-
-    <div class="six wide field">
-      <label>Item of Purchase</label>
-      <input placeholder="What are you ordering?" type="text">
+    <div class="required four wide field">
+      <label>Phone</label>
+      <input placeholder="(xxx) xxx-xxxx" type="text" ng-model="order.phone" required>
     </div>
 
-    
+    <div class="required six wide field">
+      <label>Email</label>
+      <div class="ui icon input" >
+        <input placeholder="Your email" type="text" ng-model="order.email" required>
+        <i class="user icon"></i>
+      </div>
+    </div>
+
+    <div class="three fields">
+      <div class="field">
+        <label>Item of Purchase</label>
+        <input type="text" ng-model="order.productName" ng-value="order.productName">
+      </div>
+      <div class="field">
+        <label>Size</label>
+        <input type="text" ng-model="order.size" ng-value="order.size">
+      </div>
+      <div class="field">
+        <label>Quantity</label>
+        <input type="text" ng-model="order.quantity" ng-value="order.quantity">
+      </div>
+    </div>
 
     <div class="field">
-      <label>Special Requests</label>
-      <textarea placeholder="Any special alterations?"></textarea>
+      <label>Special Instructions</label>
+      <textarea placeholder="Any special instructions? Feel free to remove the 'Size' and 'Quantity' fields and describe in detail in this area." ng-model="order.message"></textarea>
     </div>
-
-    
-
-
-  
-
-      
-   
-
-    
 
     <div class="ui hidden divider"></div>
     <div class="required field">
       <div class="ui checkbox">
-        <input name="hot-deals" type="checkbox">
+        <input name="agree" type="checkbox" ng-model="order.agree" ng-click="toggleAgree()" required>
         <label>I agree to the Terms of Service</label>
-
-
       </div>
     </div>
-   <div class="ui inverted button" >Submit</div>
+    <button class="ui inverted button" type="submit">Submit</button>
   </form>
 
-  <script>
-  $('.ui.checkbox')
-    .checkbox()
-    ;
-  </script>
-    
 </div>
 
+<div class="ui basic modal" id="email-success-modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Submission Successful
+  </div>
+  <div class="content">
+    <div class="image">
+      <i class="check icon"></i>
+    </div>
+    <div class="description">
+      <p>Your email has been sent to Oseas successfully. Please wait up to a week for a reply.</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="fluid ui inverted buttons">
+      <div class="ui green basic inverted button">
+        OK
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ui basic modal" id="email-fail-modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Publish Success
+  </div>
+  <div class="content">
+    <div class="image">
+      <i class="frown icon"></i>
+    </div>
+    <div class="description">
+      <p>The email could not be sent. You can try sending an email manually if this persists to <b>oseasapp@yahoo.com</b></p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="fluid ui inverted buttons">
+      <div class="ui green basic inverted button">
+        OK
+      </div>
+    </div>
+  </div>
+</div>

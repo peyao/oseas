@@ -22,38 +22,62 @@ angular.module('oseas.controllers', [])
   });
 })
 
-.controller('ProductCtrl', function($scope, $rootScope, $location, $stateParams, ContentService, ngDialog) {
+.controller('ProductCtrl', function($scope, $rootScope, $location, $stateParams, 
+    ContentService, ngDialog) {
 
   $('.ui.dropdown')
     .dropdown();
 
   $scope.lightbox = function (image) {
 
-    console.log('image: ' + image);
     ngDialog.open({
       template: '<img class="ui fluid image" ng-src="' + image + '">',
       plain: true
     });
-
-    /*
-    $scope.secondaryIndex = $scope.product.secondaryImages.indexOf(image);
-    console.log('secondaryIndex: ' + $scope.secondaryIndex);
-    console.log('indexUrl: ' + $scope.product.secondaryImages[$scope.secondaryIndex]);
-    if ($scope.secondaryIndex >= 0)
-      $('#secondary-modal').modal('show');
-    else
-      $('#main-modal').modal('show');
-    */
   };
 
   ContentService.getProduct($stateParams.productName, function(product) {
     $scope.product = product;
-
   });
+
+  $scope.setOrderSize = function(size) {
+    $scope.orderSize = size;
+  };
+
+  $scope.setOrderQuantity = function(quantity) {
+    $scope.orderQuantity = quantity;
+  };
 })
 
-.controller('OrderFormCtrl', function($scope, $rootScope, $location) {
-  
+.controller('OrderFormCtrl', function($scope, $rootScope, $location, $stateParams, 
+    ContentService, OrderService) {
+
+  $('.ui.checkbox').checkbox();
+
+  $scope.order = {};
+  $scope.order.productName = $stateParams.productName;
+  $scope.order.size = $stateParams.orderSize;
+  $scope.order.quantity = $stateParams.orderQuantity;
+  $scope.order.agree = false;
+
+  ContentService.getProduct($stateParams.productName, function(product) {
+    $scope.product = product;
+  });
+
+  $scope.toggleAgree = function() {
+    $scope.order.agree = !$scope.order.agree;
+  };
+
+  $scope.submitOrder = function(order) {
+    OrderService.sendOrder(order, function(success) {
+      if (success) {
+        $('#email-success-modal').modal('show');
+      }
+      else {
+        $('#email-fail-modal').modal('show');
+      }
+    });
+  };
 })
 
 .controller('AboutCtrl', function($scope, $rootScope, $location) {
@@ -70,10 +94,11 @@ angular.module('oseas.controllers', [])
 .controller('EventCtrl', function($scope, $rootScope, $location) {
 })
 
-.controller('AdminCtrl', function($scope, $rootScope, $location, UserSessionService, PublishContentService) {
+.controller('AdminCtrl', function($scope, $rootScope, $location, UserSessionService, 
+    PublishContentService) {
 
   // TODO REMOVE THIS
-  $scope.loggedIn = true; // REMOVE THIS!
+  //$scope.loggedIn = true; // REMOVE THIS!
 
   $scope.uploadedSecondary = [];
   $scope.sizes = {
@@ -116,15 +141,15 @@ angular.module('oseas.controllers', [])
   };
 
   // mainFile
-  $scope.$watch('mainFile', function () {
-    PublishContentService.publishProductImage($scope.mainFile, function(uploadedFile) {
+  $scope.$watch('mainProductFile', function () {
+    PublishContentService.publishProductImage($scope.mainProductFile, function(uploadedFile) {
       console.log('uploadedFile.name: ' + uploadedFile.name);
       $scope.uploadedMain = uploadedFile;
     });
   });
 
-  $scope.$watch('secondaryFiles', function () {
-    PublishContentService.publishProductImage($scope.secondaryFiles, function(uploadedFile) {
+  $scope.$watch('secondaryProductFiles', function () {
+    PublishContentService.publishProductImage($scope.secondaryProductFiles, function(uploadedFile) {
       $scope.uploadedSecondary.push(uploadedFile);
     });
   });
@@ -194,8 +219,19 @@ angular.module('oseas.controllers', [])
   };
 
   $scope.publishEvent = function (event) {
-
+    console.log('Publishing Event...');
+    PublishContentService.publishEvent(event.name, event.date, event.description,
+      $scope.uploadedMain, $scope.uploadedSecondary, function(status) {
+        if (status) {
+          console.log('Publish successful.');
+          $('#publish-success-modal').modal('show');
+        }
+        else {
+          console.log('Publish failed');
+          $('#publish-fail-modal').modal('show');
+        }
+      });
   };
 
-})
+});
 
