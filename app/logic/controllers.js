@@ -33,6 +33,14 @@ angular.module('oseas.controllers', [])
       }
     }
 
+    // Display all categories for a certain sex
+    // TODO: Male/Female not yet implemented
+    else if ($stateParams.category === 'all') {
+      for (var i = 0; i < products.length; i++) {
+        $scope.products.push(products[i]);
+      }
+    }
+
     // Sort by category & sex
     else {
       for (var i = 0; i < products.length; i++) {
