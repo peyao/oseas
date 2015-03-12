@@ -54,7 +54,7 @@ angular.module('oseas', ['oseas.controllers', 'oseas.services', 'ui.router', 'an
     })
     .state('orderform', {
       parent: 'nav',
-      url: '/order',
+      url: '/order/:productName?orderSize?orderQuantity',
       templateUrl: 'views/orderform.html',
       controller: 'OrderFormCtrl'
     })

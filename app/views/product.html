@@ -22,15 +22,6 @@
           <div class="ui three column grid">
             <img class="ui column image secondary-image" ng-src="{{ secondaryImage }}" ng-repeat="secondaryImage in product.secondaryImages" ng-click="lightbox(secondaryImage)">
           </div>
-          <!--
-          <div class="ui three column grid">
-            <img class="ui column image secondary-image" ng-src="{{ secondaryImage }}" ng-repeat="secondaryImage in product.secondaryImages" ng-click="lightbox(secondaryImage)">
-          </div>
-
-          <div class="ui basic modal" id="secondary-modal">
-            <img class="ui fluid image" ng-src="{{ product.secondaryImages[secondaryIndex] || product.secondaryImages[0] }}">
-          </div>
-          -->
 
         </div>
     </div> 
@@ -60,9 +51,19 @@
         <div class="text">Quantity</div>
         <i class="dropdown icon"></i>
         <div class="menu">
-          <div class="item">1</div>
-          <div class="item">2</div>
-          <div class="item">3</div>          
+          <div class="item" ng-click="setOrderQuantity(1)">1</div>
+          <div class="item" ng-click="setOrderQuantity(2)">2</div>
+          <div class="item" ng-click="setOrderQuantity(3)">3</div>          
+        </div>
+      </div>
+      <br><br>
+      <div class="ui selection dropdown">
+        <div class="text">Size</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item" ng-if="product.sizeSmall" ng-click="setOrderSize('Small')">Small</div>
+          <div class="item" ng-if="product.sizeMedium" ng-click="setOrderSize('Medium')">Medium</div>
+          <div class="item" ng-if="product.sizeLarge" ng-click="setOrderSize('Large')">Large</div>
         </div>
       </div>
 
@@ -70,7 +71,7 @@
 
       <br><br>
 
-        <div class="ui inverted button" ui-sref="orderform">Buy Now</div>
+        <div class="ui inverted button" ui-sref="orderform({ 'productName': product.name, 'orderSize': orderSize, 'orderQuantity': orderQuantity })">Buy Now</div>
 
         <div class="ui horizontal divider">
           <p color="white">Info</p>

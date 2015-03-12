@@ -14,6 +14,7 @@ var passport = require('passport');
 var cloudinary = require('cloudinary');
 var multer = require('multer');
 var fs = require('fs');
+var sendgrid = require('sendgrid')('oseas', '!oseas-app#1');
 
 var authentication = require('./routes/authentication.js');
 var publish = require('./routes/publish.js');
@@ -131,6 +132,31 @@ app.post('/api/publish/product/image', function(req, res) {
 // POST: Publish Event
 app.post('/api/publish/event', function(req, res) {
 
+});
+
+// POST: Send email to Oseas
+app.post('/api/order', function(req, res) {
+
+  console.log('Sending email to oseas from ' + req.body.order.email);
+
+  var email = new sendgrid.Email();
+
+  email.addTo('oseasapp@yahoo.com');
+  email.setFrom(req.body.order.email);
+  email.setSubject('You received an order from oseas.cf');
+  email.setHtml("" +
+    '<p><b>Order from: </b>' + req.body.order.email + '</p>' + 
+    '<p><b>Name: </b>' + req.body.order.firstName + ' ' + req.body.order.lastName + '</p>' +
+    '<p><b>Phone: </b>' + req.body.order.phone + '</p><br>' +
+    '<p><b>Product Name: </b>' + req.body.order.productName + '</p>' +
+    '<p><b>Size: </b>' + req.body.order.size + '</p>' +
+    '<p><b>Quantity: </b>' + req.body.order.quantity + '</p><br>' +
+    '<p><b>Special Instructions: </b><br>' + req.body.order.message + '</p>' +
+
+  "");
+
+  sendgrid.send(email);
+  res.send(200);
 });
 
 

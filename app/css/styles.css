@@ -17,6 +17,9 @@
 p {
   color: #e0e0e0; }
 
+a {
+  color: #fff !important; }
+
 .navbar {
   position: absolute;
   top: 0;
@@ -25,7 +28,10 @@ p {
   padding-bottom: 15px;
   padding-top: 15px; }
   .navbar .signature {
-    color: dimgrey; }
+    color: dimgray;
+    opacity: 0.2;
+    font-size: .65em;
+    vertical-align: text-bottom; }
   .navbar .nav-link {
     color: #fff;
     cursor: pointer; }
@@ -70,6 +76,8 @@ p {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   padding-top: 0%; }
+  .orderform .ui.inverted.segment {
+    background: rgba(0, 0, 0, 0.5) !important; }
 
 .contact {
   background: rgba(0, 0, 0, 0.6);
