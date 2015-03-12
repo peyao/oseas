@@ -1,13 +1,13 @@
 <div class="product below-navbar fill-rest-of-page noflicker noselect no-i-bar responsive-margins">
 
   <div class="ui fluid inverted segment">
-    
+
     <div class="ui two column padded page doubling stackable grid" align="center">
       <!--Product Picture-->
       <div class="column" align="left">
         <div class="ui breadcrumb">
           <i class="left white chevron icon divider"></i>
-          <a class="section" ui-sref="catalogue"> Back to Catalogue</a>
+          <a class="section" ui-sref="catalogue"> Back to Catalogue </a>
         </div>
         <br><br><br>
 
@@ -51,7 +51,10 @@
       <br><br>
 
       <font size="32">{{ product.name }}</font>
+      <br>
+      ${{product.price}}
       <div class="ui divider"></div>
+
 
       <div class="ui selection dropdown">
         <div class="text">Quantity</div>
@@ -63,6 +66,8 @@
         </div>
       </div>
 
+
+
       <br><br>
 
         <div class="ui inverted button" ui-sref="orderform">Buy Now</div>
@@ -73,8 +78,16 @@
 
         <p align="center">{{ product.description }}</p>
 
+        <p align="center">{{product.composition}} | {{product.care}}</p>
+
         <div class="ui divider"></div>
+        
+        <p align="center">Model Height: {{product.modelHeight}} ; Size: {{product.modelSize}}</p>
+        
+        <div class="ui divider"></div>
+        
         Other pieces of this look:
+
         <br>
         <br>
 
