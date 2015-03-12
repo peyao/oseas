@@ -34,7 +34,7 @@
           <div class="four wide column">
             <!--First layer of stuff-->
             <div class="ui selection list">
-              <div ui-sref="catalogue" id="nav-cat" class="item">
+              <div ui-sref="catalogue({ sex: 'all', category: 'all' })" id="nav-cat" class="item">
                 <span class="nav-link">Catalogue</span>
               </div>
               <div ui-sref="about" id="nav-about" class="item">
@@ -67,13 +67,13 @@
             <!--Third layer of stuff-->
             <div class="ui selection list">
               <div class="item">
-                <span class="nav-link">Tops</span>
+                <span class="nav-link" ui-sref="catalogue({ sex: 'women', category: 'top' })">Tops</span>
               </div>
               <div class="item">
-                <span class="nav-link">Bottoms</span>
+                <span class="nav-link" ui-sref="catalogue({ sex: 'women', category: 'bottom' })">Bottoms</span>
               </div>
               <div class="item">
-                <span class="nav-link">Dresses</span>
+                <span class="nav-link" ui-sref="catalogue({ sex: 'women', category: 'dress' })">Dresses</span>
               </div>
             </div>
           </div>

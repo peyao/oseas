@@ -5,6 +5,8 @@ angular.module('oseas.controllers', [])
   $rootScope.elCat = angular.element( document.querySelector('#nav-cat'));
   $rootScope.elAbout = angular.element( document.querySelector('#nav-about'));
   $rootScope.elContact = angular.element( document.querySelector('#nav-contact'));
+
+
 })
 
 .controller('HomeCtrl', function($scope, $rootScope, $state, $location) {
@@ -15,11 +17,32 @@ angular.module('oseas.controllers', [])
   };
 })
 
-.controller('CatalogueCtrl', function($scope, $rootScope, $location, ContentService) {
+.controller('CatalogueCtrl', function($scope, $rootScope, $location, ContentService, 
+    $stateParams) {
+
+  $scope.products = [];
+  //$stateParams.sex is unused.
+
   ContentService.getAllProducts(function(products) {
-    $scope.products = products;
-    console.log('products[0].mainImage:' + products[0].mainImage);
+
+    // Display all
+    if ($stateParams.sex === 'all' && $stateParams.category === 'all') {
+      console.log('Display all');
+      for (var i = 0; i < products.length; i++) {
+        $scope.products.push(products[i]);
+      }
+    }
+
+    // Sort by category & sex
+    else {
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].category === $stateParams.category) {
+          $scope.products.push(products[i]);
+        }
+      }
+    }
   });
+
 })
 
 .controller('ProductCtrl', function($scope, $rootScope, $location, $stateParams, 
